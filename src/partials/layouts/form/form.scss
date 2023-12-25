@@ -1,0 +1,4 @@
+.form {
+    @include flexCenterPosition;
+    flex-direction: column;
+}
