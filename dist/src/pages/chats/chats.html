@@ -1,0 +1,1148 @@
+<!doctype html>
+    <html lang="ru">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+        <meta name="format-detection" content="telephone=no"/>
+        <meta name="description" content="общение в чате, отправка сообщений, обмен идеями, добавляй новых друзей"/>
+        <meta name="keywords" content="чат, общение, переписка" />
+        <title>Chat Page</title>
+        <style lang="scss">@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap");
+.auth-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.auth-page .input-wrap:nth-child(3n) {
+  margin-bottom: 8rem;
+}
+.registration-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chats-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+.profile-page {
+  height: 99.8vh;
+  display: flex;
+}
+.profile-page .back-chat {
+  flex: 1 1 5%;
+  background: #FBFBFB;
+  border-right: 2px solid #EAEAEA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes backAnim {
+  50% {
+    width: 35px;
+    height: 35px;
+  }
+}
+.profile-page .back-chat .wrap-back .back {
+  width: 30px;
+  height: 30px;
+  background: #3369f3;
+  border: none;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.profile-page .back-chat .wrap-back .back:hover {
+  background: #4C79F5;
+  animation: backAnim 0.3s ease;
+}
+.profile-page .profile-wrap {
+  flex: 1 1 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-page .profile-wrap .profile {
+  width: 600px;
+  height: 600px;
+}
+.profile-page .profile-wrap .profile .profile-photo-name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.profile-page .profile-wrap .profile .profile-photo-name .profile-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background: #EFEFEF;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-page .profile-wrap .profile .profile-photo-name .profile-photo .change-photo {
+  width: 130px;
+  height: 130px;
+  border-radius: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-page .profile-wrap .profile .profile-photo-name .profile-photo .change-photo .change-photo-button {
+  background: none;
+  border: none;
+  color: #FFFFFF;
+  font-weight: 500;
+  font-size: 16px;
+}
+.profile-page .profile-wrap .profile .profile-info-user {
+  margin: 3rem 0;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing {
+  border-bottom: 2px solid #EAEAEA;
+  padding: 10px 0;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing .editing {
+  padding: 0;
+  background: none;
+  border: none;
+  color: #3369f3;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing .editing:hover {
+  text-decoration: underline;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing .exit {
+  color: #FF0000;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing .exit:hover {
+  text-decoration: underline;
+}
+.profile-page .profile-wrap .profile .profile-editing .wrap-editing:last-child {
+  border: none;
+}
+.wrap-error-404 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap-error-404 .block-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap-error-404 .block-error .number-error-404 {
+  font-size: 40px;
+}
+.wrap-error-404 .block-error .number-error-404 h2 {
+  margin: 0;
+}
+.wrap-error-404 .block-error .info-error {
+  font-weight: 700;
+  font-size: 20px;
+}
+.wrap-error-404 .block-error .back-button-wrap .back-button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  padding: 0;
+  color: #3369f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+.wrap-error-500 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrap-error-500 .block-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.wrap-error-500 .block-error .number-error-404 {
+  font-size: 40px;
+}
+.wrap-error-500 .block-error .number-error-404 h2 {
+  margin: 0;
+}
+.wrap-error-500 .block-error .info-error {
+  font-weight: 700;
+  font-size: 20px;
+}
+.wrap-error-500 .block-error .back-button-wrap .back-button {
+  background: none;
+  border: none;
+  font-size: 12px;
+  padding: 0;
+  color: #3369f3;
+  font-weight: 500;
+  cursor: pointer;
+}
+.button {
+  font-size: 1rem;
+  color: #3369f3;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+.pointer {
+  cursor: pointer;
+}
+.button:hover {
+  text-decoration: underline;
+}
+.button:active {
+  color: #acc1fa;
+}
+.background {
+  padding: 0.7rem 3rem;
+  color: white;
+  background: #3369f3;
+}
+.background:hover {
+  background: #4C79F5;
+  text-decoration: none;
+}
+.background:active {
+  background: #acc1fa;
+  text-decoration: none;
+}
+.input-wrap {
+  width: 100%;
+  position: relative;
+  margin-bottom: 1.8rem;
+}
+.input-wrap .input {
+  margin: 0 auto;
+  font-size: 1rem;
+  display: block;
+  background: none;
+  border: none;
+  outline: none;
+}
+.input-wrap .lable {
+  display: block;
+  position: absolute;
+}
+.input-wrap .log {
+  width: 15rem;
+  border-bottom: 1px solid #b3b3b3;
+}
+.input-wrap .logLable {
+  top: -0.1rem;
+  left: 0.5rem;
+  font-size: 1rem;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.input-wrap .log:focus ~ .logLable,
+.input-wrap .log:not(:placeholder-shown) ~ .logLable {
+  top: -1rem;
+  font-size: 0.8rem;
+  left: -0.5rem;
+}
+.input-wrap .log:not(:placeholder-shown) {
+  border-bottom: 1px solid #3369f3;
+}
+.input-wrap .search {
+  width: 85%;
+  padding: 0.5rem;
+  background: #EFEFEF;
+  border-radius: 5px;
+}
+.input-wrap .searchLable {
+  top: 0.4rem;
+  left: 45%;
+  color: #999999;
+}
+.input-wrap .search:focus ~ .searchLable,
+.input-wrap .search:not(:placeholder-shown) ~ .searchLable {
+  visibility: hidden;
+}
+.button-profile-wrap {
+  height: 50%;
+  width: 100%;
+  padding-top: 1.2rem;
+  padding-right: 1rem;
+}
+.button-profile-wrap .button-profile {
+  float: right;
+  background: none;
+  border: none;
+  color: #999999;
+  cursor: pointer;
+}
+.chat-wrap {
+  height: 80px;
+  color: #999999;
+  border-top: 2px solid #EAEAEA;
+  margin: 0 10px;
+  display: flex;
+}
+.chat-wrap .icon-chat {
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+.chat-wrap .icon-chat .icon {
+  width: 47px;
+  height: 47px;
+  background: #EFEFEF;
+  border-radius: 100%;
+}
+.chat-wrap .name-info {
+  flex: 0 1 75%;
+  padding-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.chat-wrap .name-info h3, .chat-wrap .name-info p {
+  font-size: 14px;
+  margin: 0;
+}
+.chat-wrap .name-info .name-chat {
+  margin-bottom: 0.2rem;
+}
+.chat-wrap .name-info .name-chat h3 {
+  color: #1E1E1E;
+}
+.chat-wrap .name-info .info-body p {
+  font-weight: bold;
+}
+.chat-wrap .time-quantity {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.chat-wrap .time-quantity .time-message {
+  font-size: 12px;
+}
+.chat-wrap .time-quantity .quantity-message {
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background: #3369F3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chat-wrap .time-quantity .quantity-message span {
+  font-size: 11px;
+  font-weight: bold;
+  color: #FFFFFF;
+}
+.plug {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-messages-chat {
+  border-bottom: 2px solid #EAEAEA;
+  margin: 0 15px;
+  flex: 1 1 5%;
+  display: flex;
+  justify-content: space-between;
+}
+.header-messages-chat .header-profile-messages-chat {
+  display: flex;
+  align-items: center;
+}
+.header-messages-chat .header-profile-messages-chat .icon-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background: #EFEFEF;
+  margin-right: 10px;
+}
+.header-messages-chat .header-setting-chat {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-messages-chat .header-setting-chat .setting-chat {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header-messages-chat .header-setting-chat .setting-chat .dot {
+  width: 4px;
+  height: 4px;
+  margin-bottom: 3px;
+  border-radius: 100%;
+  background: #1E1E1E;
+}
+.header-messages-chat .header-setting-chat .setting-chat .dot:last-child {
+  margin: 0;
+}
+.messages-input-button {
+  flex: 1 1 5%;
+  border-top: 2px solid #EAEAEA;
+  margin: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.messages-input-button .paper-clip {
+  cursor: pointer;
+}
+.messages-input-button .input-message-wrap {
+  flex: 1 1 100%;
+  display: flex;
+  justify-content: center;
+}
+.messages-input-button .input-message-wrap .input-message {
+  width: 95%;
+  border: none;
+  background: #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 12px;
+}
+.messages-input-button .button-message-wrap .button-message {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: #3369f3;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.data-wrap {
+  font-weight: 500;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+}
+.message {
+  position: relative;
+  color: #1E1E1E;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  padding: 10px;
+  max-width: 600px;
+  min-width: 50px;
+}
+.message p {
+  margin: 0;
+}
+.message .time {
+  display: block;
+  float: right;
+  font-size: 11px;
+}
+.message .time-left {
+  color: #999999;
+}
+.message .time-left svg {
+  visibility: hidden;
+}
+.message .time-right {
+  color: #3369f3;
+}
+.message .time-right::after {
+  content: url("https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=1-189&mode=design&t=K9RyQ3MwWe23hhX5-4");
+}
+.message-left {
+  background: #F8F8F8;
+  border-radius: 0px 10px 10px 10px;
+}
+.message-right {
+  background: #E4EDFD;
+  border-radius: 10px 10px 0 10px;
+}
+.profile-type-info {
+  padding: 10px 0;
+  border-bottom: 2px solid #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-type-info span, .profile-type-info h4 {
+  margin: 0;
+}
+.profile-type-info:last-child {
+  border: none;
+}
+.zero {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+.card {
+  width: 340px;
+  border-radius: 10px;
+  background: #FFFFFF;
+  box-shadow: 0 0 5px #b3b3b3;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.leftPositionChats {
+  border-right: 2px solid #EAEAEA;
+  background: #FBFBFB;
+  flex: 1 1 25%;
+  display: flex;
+  flex-direction: column;
+}
+.rightPositionChat {
+  flex: 1 1 75%;
+  display: flex;
+  flex-direction: column;
+}
+.header-wrap {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.chat-list {
+  flex: 1 1 80%;
+  overflow: auto;
+}
+.chat-list::-webkit-scrollbar {
+  width: 0;
+}
+.messages {
+  flex: 1 1 82%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.message-wrap {
+  margin: 10px 15px;
+  display: flex;
+}
+.right {
+  justify-content: flex-end;
+}
+.form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+        </style>
+      </head>
+      <body class="zero">
+        <main>
+              <div class="chats-page">
+          <div class="leftPositionChats"><header class="header-wrap fBox">                <div class="button-profile-wrap">
+                              <button class="button-profile" type="button" >Профиль &gt;</button>
+                          </div>
+                          <div class="input-wrap">
+                              <input id="search" class="input search" name="search" type="text" autocomplete="off" placeholder=" " />
+                              <label class="lable searchLable" for="search">Поиск</label>
+                          </div>
+          </header>
+          <main class="chat-list">                <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+                          <div class="chat-wrap">
+                              <div class="icon-chat">
+                                  <img class="icon" src="" alt="">
+                              </div>
+                              <div class="name-info">
+                                  <div class="name-chat">
+                                      <h3>
+                                          Андрей
+                                      </h3>
+                                  </div>
+                                  <div class="info-body">
+                                      <p>
+                                          Изображение
+                                      </p>
+                                  </div>
+                              </div>
+                              <div class="time-quantity">
+                                  <div class="time-message">
+                                      10:49
+                                  </div>
+                                  <div class="quantity-message">
+                                      <span>
+                                         2 
+                                      </span>
+                                  </div>
+                              </div>      
+                          </div>
+          </main>
+          </div>
+          <div class="rightPositionChat">            <header class="header-messages-chat">
+                          <div class="header-profile-messages-chat">
+                              <div class="icon-profile">
+                      
+                              </div>
+                              <div class="name-message">
+                                  <h3>
+                                      Андрей
+                                  </h3>
+                              </div>
+                          </div>
+                          <div class="header-setting-chat">
+                              <div class="setting-chat">
+                                  <div class="dot"></div>
+                                  <div class="dot"></div>
+                                  <div class="dot"></div>
+                              </div>
+                          </div>
+                      </header>
+          <main class="messages">                <div class="data-wrap">
+                              <span class="data">19 Июня</span>
+                          </div>
+          <div class="message-wrap ">                    <div class="message message-left">
+                                 <p>
+                                      Привет! Смотри, тут всплыл интересный кусок лунной космической истории — 
+                                                      НАСА в какой-то момент попросила Хассельблад адаптировать модель SWC для полетов на Луну. Сейчас мы все знаем что астронавты летали 
+                                                      с моделью 500 EL — и к слову говоря, все тушки этих камер все еще находятся на поверхности Луны, так как астронавты с собой забрали только кассеты с пленкой.
+                                  </p>
+                                  <span class="time time-left">
+                                      <svg class="time-left" width="13" height="8" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33301)" stroke="#3369F3"/>
+                                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5)" stroke="#3369F3"/>
+                                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5)" stroke="#3369F3"/>
+                                      </svg>
+                                      11:56
+                                  </span> 
+                              </div>
+          </div>
+          
+          <div class="message-wrap right">                    <div class="message message-right">
+                                 <p>
+                                      Круто!
+                                  </p>
+                                  <span class="time time-right">
+                                      <svg class="time-right" width="13" height="8" viewBox="0 0 10 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <line y1="-0.5" x2="3.765" y2="-0.5" transform="matrix(0.705933 0.708278 -0.705933 0.708278 0.700195 2.33301)" stroke="#3369F3"/>
+                                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 3.35828 5)" stroke="#3369F3"/>
+                                      <line y1="-0.5" x2="5.6475" y2="-0.5" transform="matrix(0.705933 -0.708278 0.705933 0.708278 6.01587 5)" stroke="#3369F3"/>
+                                      </svg>
+                                      12:00
+                                  </span> 
+                              </div>
+          </div>
+          
+          </main>
+                      <div class="messages-input-button">
+                          <div class="paper-clip">
+                              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M7.18662 13.5L14.7628 5.92389L15.7056 6.8667L8.12943 14.4428L7.18662 13.5Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70067 16.0141L17.2768 8.43793L18.2196 9.38074L10.6435 16.9569L9.70067 16.0141Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0433 21.3567L22.6195 13.7806L23.5623 14.7234L15.9861 22.2995L15.0433 21.3567Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8708L25.1335 16.2946L26.0763 17.2374L18.5002 24.8136L17.5574 23.8708Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M17.5574 23.8709C14.9423 26.486 10.7118 26.4954 8.10831 23.8919C5.50482 21.2884 5.51424 17.0579 8.12936 14.4428L7.18655 13.5C4.0484 16.6381 4.0371 21.7148 7.16129 24.839C10.2855 27.9632 15.3621 27.9518 18.5003 24.8137L17.5574 23.8709Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M22.6195 13.7806L23.5623 14.7234C26.003 12.2826 26.0118 8.3341 23.5819 5.90417C21.152 3.47424 17.2035 3.48303 14.7627 5.92381L15.7055 6.86662C17.6233 4.94887 20.7257 4.94196 22.6349 6.85119C24.5441 8.76042 24.5372 11.8628 22.6195 13.7806Z" fill="#999999"/>
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.70092 16.0144C7.95751 17.7578 7.95123 20.5782 9.68689 22.3138C11.4226 24.0495 14.2429 24.0432 15.9863 22.2998L15.0435 21.357C13.8231 22.5774 11.8489 22.5818 10.6339 21.3668C9.41894 20.1518 9.42334 18.1776 10.6437 16.9572L9.70092 16.0144Z" fill="#999999"/>
+                              </svg>
+                      
+                          </div>
+                          <div class="input-message-wrap">
+                              <input class="input-message" type="text" name="message" placeholder="Сообщение">
+                          </div>
+                          <div class="button-message-wrap">
+                              <button class="button-message" type="button">
+                                  <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none">
+                                      <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                              </button>
+                          </div>
+                      </div>
+          </div>
+              </div>
+        </main>
+        </main>
+      </body>
+    </html>
+    
