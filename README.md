@@ -2,14 +2,14 @@
 
 ## Netlify links
 
-[Navigation](https://illustrious-chimera-d6af04.netlify.app/)
+[Navigation](https://regal-gelato-ae8ff0.netlify.app/)
 
-- [Auth](https://illustrious-chimera-d6af04.netlify.app/src/pages/auth/auth.html)
-- [Registration](https://illustrious-chimera-d6af04.netlify.app/src/pages/registation/registation)
-- [Messenger](https://illustrious-chimera-d6af04.netlify.app/src/pages/chats/chats.html)
-- [User settings](https://illustrious-chimera-d6af04.netlify.app/src/pages/profile/profile.html)
-- [404](https://illustrious-chimera-d6af04.netlify.app/src/pages/404/404.html)
-- [500](https://illustrious-chimera-d6af04.netlify.app/src/pages/500/500.html)
+- [Auth](https://regal-gelato-ae8ff0.netlify.app/src/pages/auth/auth)
+- [Registration](https://regal-gelato-ae8ff0.netlify.app/src/pages/registration/registration)
+- [Messenger](https://regal-gelato-ae8ff0.netlify.app/src/pages/chats/chats)
+- [User settings](https://regal-gelato-ae8ff0.netlify.app/src/pages/profile/profile)
+- [404](https://regal-gelato-ae8ff0.netlify.app/src/pages/404/404)
+- [500](https://regal-gelato-ae8ff0.netlify.app/src/pages/500/500)
 
 ## Установка
 
