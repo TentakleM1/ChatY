@@ -1,40 +1,13 @@
-* {
-    font-family: 'Inter', sans-serif;
+@import "./src/style.scss";
+
+.zero {
+    font-family: Inter, sans-serif;
 }
+
 .app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     height: 100vh;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .nav {
-        .ul {
-            list-style: none;
-
-            .li {
-                display: inline;
-                .navigationLink {
-                    font-size: 23px;
-                    color: white;
-                    text-decoration: none;
-                    margin: 5px;
-                    padding: 10px;
-                    background: skyblue;
-                    border-radius: 10px;
-                }
-            
-                .navigationLink:hover {
-                    background: coral;
-                }
-            
-                .navigationLink:active {
-                    background: whitesmoke;
-                }
-            }
-        }
-    }
-
-
 }

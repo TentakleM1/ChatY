@@ -1,18 +1,19 @@
 .input-wrap {
-    width: 100%;
     position: relative;
+    width: 100%;
     margin-bottom: $margin-bottom-input;
 
     .input {
+        display: block;
         margin: 0 auto;
         font-size: $middle-font-size;
-        display: block;
+
         @include inputNone;
     }
 
     .lable {
-        display: block;
         position: absolute;
+        display: block;
     }
 
     .log {
@@ -20,21 +21,25 @@
         border-bottom: 1px solid $input-underline;
     }
 
-    .logLable {
+    .log-lable {
         top: -0.1rem;
         left: 0.5rem;
         font-size: 1rem;
-        transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+        transition:
+            top 200ms ease-in,
+            left 200ms ease-in,
+            font-size 200ms ease-in;
+
         @include dontSelect;
     }
 
-    .log:focus ~ .logLable,
-    .log:not(:placeholder-shown) ~ .logLable {
+    .log:focus ~ .log-lable,
+    .log:not(:placeholder-shown) ~ .log-lable {
         top: -1rem;
-        font-size: 0.8rem;
         left: -0.5rem;
+        font-size: 0.8rem;
     }
-    
+
     .log:not(:placeholder-shown) {
         border-bottom: 1px solid $button-color;
     }
@@ -46,14 +51,14 @@
         border-radius: $border-radius;
     }
 
-    .searchLable {
+    .search-lable {
         top: 0.4rem;
         left: 45%;
         color: $chat-list-color;
     }
 
-    .search:focus ~ .searchLable,
-    .search:not(:placeholder-shown) ~ .searchLable {
+    .search:focus ~ .search-lable,
+    .search:not(:placeholder-shown) ~ .search-lable {
         visibility: hidden;
     }
 }

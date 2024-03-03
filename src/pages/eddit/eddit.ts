@@ -37,7 +37,7 @@ export const eddit = (profile: Profile) => {
         type: 'text',
         name: 'email',
         selectorInput: 'search',
-        selecrtorLable: 'searchLable',
+        selecrtorLable: 'search-lable',
         idForLable: 'search',
         value: profile.mail
     })
@@ -46,7 +46,7 @@ export const eddit = (profile: Profile) => {
         type: 'text',
         name: 'login',
         selectorInput: 'search',
-        selecrtorLable: 'searchLable',
+        selecrtorLable: 'search-lable',
         idForLable: 'search',
         value: profile.login
     })
@@ -55,7 +55,7 @@ export const eddit = (profile: Profile) => {
         type: 'text',
         name: 'first_name',
         selectorInput: 'search',
-        selecrtorLable: 'searchLable',
+        selecrtorLable: 'search-lable',
         idForLable: 'search',
         value: profile.first_name
     })
@@ -64,7 +64,7 @@ export const eddit = (profile: Profile) => {
         type: 'text',
         name: 'second_name',
         selectorInput: 'search',
-        selecrtorLable: 'searchLable',
+        selecrtorLable: 'search-lable',
         idForLable: 'search',
         value: profile.second_name
     })
@@ -73,7 +73,7 @@ export const eddit = (profile: Profile) => {
         type: 'text',
         name: 'phone',
         selectorInput: 'search',
-        selecrtorLable: 'searchLable',
+        selecrtorLable: 'search-lable',
         idForLable: 'search',
         value: profile.phone
     })

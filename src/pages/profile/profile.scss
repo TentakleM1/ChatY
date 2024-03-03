@@ -1,21 +1,17 @@
 .profile-page {
+    display: flex;
     height: 99.8vh;
 
-    display: flex;
-
     .back-chat {
-        flex: 1 1 5%;
-
-        background: #FBFBFB;
-        border-right: 2px solid #EAEAEA;
-
         display: flex;
-        justify-content: center;
+        flex: 1 1 5%;
         align-items: center;
+        justify-content: center;
+        background: #fbfbfb;
+        border-right: 2px solid #eaeaea;
 
         .wrap-back {
-
-            @keyframes backAnim {
+            @keyframes back-anim {
                 50% {
                     width: 35px;
                     height: 35px;
@@ -28,16 +24,16 @@
                 background: $button-color;
                 border: none;
                 border-radius: 100%;
-                @include flexCenterPosition;
                 cursor: pointer;
+
+                @include flexCenterPosition;
             }
 
             .back:hover {
                 background: $button-hover;
-                animation: backAnim 0.3s ease;
+                animation: back-anim 0.3s ease;
             }
         }
-
     }
 
     .profile-wrap {
@@ -48,40 +44,39 @@
         .profile {
             width: 600px;
             height: 600px;
-            
 
             .profile-photo-name {
                 @include flexCenterPosition;
+
                 flex-direction: column;
 
-              .profile-photo {
-                width: 130px;
-                height: 130px;
-                border-radius: 100%;
-                background: #EFEFEF;
-                cursor: pointer;
-
-                @include flexCenterPosition;
-
-                .change-photo {
+                .profile-photo {
                     width: 130px;
                     height: 130px;
+                    background: #efefef;
                     border-radius: 100%;
-                    background: rgba(0,0,0, .5);
-                    position: absolute;
+                    cursor: pointer;
+
                     @include flexCenterPosition;
 
+                    .change-photo {
+                        position: absolute;
+                        width: 130px;
+                        height: 130px;
+                        background: rgb(0 0 0 / 50%);
+                        border-radius: 100%;
 
-                    .change-photo-button {
-                        @include buttonNone;
-                        color: #FFFFFF;
-                        font-weight: 500;
-                        font-size: 16px;
+                        @include flexCenterPosition;
+
+                        .change-photo-button {
+                            @include buttonNone;
+
+                            color: #fff;
+                            font-weight: 500;
+                            font-size: 16px;
+                        }
                     }
                 }
-
-              } 
-              
             }
 
             .profile-info-user {
@@ -90,16 +85,17 @@
 
             .profile-editing {
                 .wrap-editing {
-                    border-bottom: 2px solid #EAEAEA;
                     padding: 10px 0;
-                    
+                    border-bottom: 2px solid #eaeaea;
+
                     .editing {
                         padding: 0;
-                        @include buttonNone;
                         color: $button-color;
-                        font-size: 16px;
                         font-weight: 500;
+                        font-size: 16px;
                         cursor: pointer;
+
+                        @include buttonNone;
                     }
 
                     .editing:hover {
@@ -107,7 +103,7 @@
                     }
 
                     .exit {
-                        color: #FF0000;
+                        color: #f00;
                     }
 
                     .exit:hover {
@@ -120,7 +116,5 @@
                 }
             }
         }
-
     }
-    
 }

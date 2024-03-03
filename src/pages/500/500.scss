@@ -2,7 +2,6 @@
     @include forCardCenterPosition;
 
     .block-error {
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -21,13 +20,13 @@
         }
 
         .back-button-wrap {
-
             .back-button {
                 @include buttonNone;
-                font-size: 12px;
+
                 padding: 0;
                 color: $button-color;
                 font-weight: 500;
+                font-size: 12px;
                 cursor: pointer;
             }
         }

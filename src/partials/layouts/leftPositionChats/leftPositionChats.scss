@@ -1,9 +1,7 @@
-.leftPositionChats {
-    border-right: 2px solid $border-chat;
-    background: $left-chat-color-background;
-    flex: 1 1 25%;
-
+.left-position-chats {
     display: flex;
+    flex: 1 1 25%;
     flex-direction: column;
-    
+    background: $left-chat-color-background;
+    border-right: 2px solid $border-chat;
 }

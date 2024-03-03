@@ -1,10 +1,10 @@
 .button {
-    font-size: $middle-font-size;
+    margin-bottom: $margin-bottom-button;
     color: $button-color;
+    font-size: $middle-font-size;
     background: none;
     border: none;
     border-radius: 8px;
-    margin-bottom: $margin-bottom-button;
 }
 
 .pointer {
@@ -26,27 +26,26 @@
 }
 
 .background:hover {
-    background: $button-hover;
     text-decoration: none;
+    background: $button-hover;
 }
 
 .background:active {
-    background: $button-active;
     text-decoration: none;
+    background: $button-active;
 }
 
 .button-profile-wrap {
-    height: 50%;
     width: 100%;
+    height: 50%;
     padding-top: 1.2rem;
     padding-right: 1rem;
 
     .button-profile {
         float: right;
-
+        color: $chat-list-color;
         background: none;
         border: none;
-        color: $chat-list-color;
         cursor: pointer;
     }
 }

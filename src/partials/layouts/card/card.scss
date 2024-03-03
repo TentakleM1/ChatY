@@ -1,11 +1,10 @@
 .card {
-    width: 340px;
-    border-radius: 10px;
-    background: $white;
-    box-shadow: 0 0 5px $input-underline;
-    padding: 1rem;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 340px;
+    padding: 1rem;
+    background: $white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px $input-underline;
 }

@@ -1,13 +1,12 @@
 .profile-type-info {
-    padding: 10px 0;
-
-    border-bottom: 2px solid $border-chat;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 2px solid $border-chat;
 
-    span, h4 {
+    span,
+    h4 {
         margin: 0;
     }
 }

@@ -1,6 +1,6 @@
 export const template = 
     `<div class="chats-page">
-        <div class="leftPositionChats">
+        <div class="left-position-chats">
             <header class="header-wrap fBox"> 
                 {{{buttonProfileChats}}}
                 {{{inputChats}}}
@@ -9,8 +9,8 @@ export const template =
                 {{{choiсeChatInListChats}}}
             </main>
         </div>
-        <div class="rightPositionChat">
-            {{{headerMessagesChatChats}}}
+        <div class="right-position-chat">
+            {{{header-messages-chat-chats}}}
             <main class="messages">
                 {{{dataChats}}}
                 {{{messageChats}}}

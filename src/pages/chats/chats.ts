@@ -34,7 +34,7 @@ const inputChats: input = input({
     type: 'text',
     name: 'search',
     selectorInput: 'search',
-    selecrtorLable: 'searchLable',
+    selecrtorLable: 'search-lable',
     idForLable: 'search',
     placeholder: 'Поиск'
 })
