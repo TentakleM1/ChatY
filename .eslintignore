@@ -1,0 +1,4 @@
+/dist
+**/*.min.js
+**/**/*.tmpl.js
+/node_modules 

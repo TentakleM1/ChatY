@@ -1,37 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" content="общение в чате, отправка сообщений, обмен идеями, добавляй новых друзей"/>
+    <meta name="keywords" content="чат, общение, переписка" />
     <title>Vite App</title>
     <style lang="sass">
       @import url('./index.scss');
+      @import url('./src/style.scss');
     </style>
   </head>
-  <body>
-    <div class="app">
-      <nav class="nav">
-        <ul class="ul">
-          <li class="li">
-            <a class="navigationLink" href="./src/pages/auth/auth.html">Авторизация</a>
-          </li>
-          <li class="li">
-            <a class="navigationLink" href="./src//pages/registration/registration.html">Регистрация</a>
-          </li>
-          <li class="li">
-            <a class="navigationLink" href="./src/pages/chats/chats.html">Список чатов и лента</a>
-          </li>
-          <li class="li">
-            <a class="navigationLink" href="./src/pages/profile/profile.html">Настройки пользвателя</a>
-          </li>
-          <li class="li">
-            <a class="navigationLink" href="./src/pages/404/404.html">Ошибка 404</a>
-          </li>
-          <li class="li">
-            <a class="navigationLink" href="./src/pages/500/500.html">Ошибки 5хх</a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+  <body class="zero">
+    <div><a href="http:///login"></a></div>
+    <div id="app"></div>
+    <script type="module" src="./main.ts"></script>
   </body>
 </html>

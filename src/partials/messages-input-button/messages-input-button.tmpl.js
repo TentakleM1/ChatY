@@ -1,4 +1,8 @@
-<div class="messages-input-button">
+import Handlebars from "handlebars"
+
+export const messagesInputButton = ({type}) => {
+    return Handlebars.compile(
+        `<div class="messages-input-button">
     <div class="paper-clip">
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M7.18662 13.5L14.7628 5.92389L15.7056 6.8667L8.12943 14.4428L7.18662 13.5Z" fill="#999999"/>
@@ -15,10 +19,10 @@
         <input class="input-message" type="text" name="message" placeholder="Сообщение">
     </div>
     <div class="button-message-wrap">
-        <button class="button-message" type="{{type}}">
-            <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+        <button class="button-message" id="send" type="{{type}}">
+            >
         </button>
     </div>
-</div>
+</div>`
+    )({type})
+}

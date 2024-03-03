@@ -20,5 +20,7 @@
 
 ## Ключевые технологии
 
+- Eslint
+- TypeScript
 - шаблонизатор - handlebars
 - css препроцессор - sass
