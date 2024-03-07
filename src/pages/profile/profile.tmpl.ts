@@ -32,5 +32,4 @@ export const template = `<div class="back-chat">
                 {{{buttonProfile}}}
             </div>
         </div>
-    </div>`
-    
+    </div>`;

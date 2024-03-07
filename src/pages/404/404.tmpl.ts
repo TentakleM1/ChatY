@@ -10,7 +10,4 @@ export const template = `
         {{{button}}}
     </div>
 </div>
-`
-
-
- 
+`;

@@ -5,4 +5,4 @@ export const template = `<div class="profile-type-info">
             <div class="profile-info">
                 <span>{{info}}</span>
             </div> 
-        </div>`
+        </div>`;

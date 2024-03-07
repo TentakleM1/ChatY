@@ -1,4 +1,5 @@
 /dist
 **/*.min.js
-**/**/*.tmpl.js
+**/**/*.tmpl.ts
+/src
 /node_modules 

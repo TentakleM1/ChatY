@@ -26,4 +26,4 @@ export const template = `<div class="chat-wrap" onclick="window.location.href='/
                     </span>
                 </div>
             </div>      
-        </div>`
+        </div>`;

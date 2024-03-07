@@ -33,4 +33,4 @@ export const template = `<div class="back-chat">
                 </div>
             </form>
         </div>
-    </div>`
+    </div>`;

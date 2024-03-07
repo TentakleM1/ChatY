@@ -4,4 +4,4 @@ export const template = `<header class="header-wrap fBox">
 </header>
 <main class="chat-list">
     {{{chats}}}
-</main>`
+</main>`;

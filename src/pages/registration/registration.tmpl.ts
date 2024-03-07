@@ -8,4 +8,4 @@ export const template = `<div class="registration-page">
             {{{button}}}
         </form>
     </div>
-</div>`
+</div>`;

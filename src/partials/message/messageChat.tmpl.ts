@@ -12,5 +12,4 @@ export const template = `<div class="message-wrap {{right}}">
                     {{time}}
                 </span> 
             </div>
-        </div>`
-        
+        </div>`;

@@ -21,4 +21,4 @@ export const template = `<header class="header-messages-chat">
         {{{dataChats}}}
         {{{messageChats}}}
     </main>
-    {{{messageInputButton}}}`
+    {{{messageInputButton}}}`;
