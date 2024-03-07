@@ -1,92 +1,56 @@
-import Handlebars from "handlebars";
-
 import { template } from "./eddit.tmpl";
-import { buttonProfile } from '../../partials/button/button.tmpl';
-import { input } from '../../partials/input/input.tmpl'
+import Button from "../../partials/button/button";
+import { Block } from "../../core/block";
+import Input from "../../partials/input/input";
+import { getForm } from "../../core/utils/getForm/getForm";
 
-import { Profile } from "../profile/profile";
+const buttonProfileEdit = [
+    new Button({
+        name: 'buttonProfile', 
+        selectorWrap: 'wrap-editing',
+        selectorButton: 'editing',
+        text: 'Сохранить',
+        events: {
+            click: getForm
+        }}),
+    new Button({
+        name: 'buttonProfile',
+        selectorWrap: 'wrap-editing',
+        selectorButton: 'editing', 
+        text: 'Изменить пароль'}),
+    new Button({
+        name: 'buttonProfile',
+        selectorWrap: 'wrap-editing',
+        selectorButton: 'editing exit', 
+        text: 'Выйти',
+        events: {
+            click: () => window.location.href = '/login'
+        }})  
+]
 
-const buttonProfileEdit: buttonProfile = buttonProfile({
-    selectorWrap: 'wrap-editing',
-    selectorButton: 'editing',
-    type: 'button',
-    text: 'Сохранить',
-    id: 'btn'
-})
-const buttonProfileEditPassword: buttonProfile = buttonProfile({
-    type: 'button',
-    text: 'Изменить пароль',
-    url: "", 
-    selectorWrap: 'wrap-editing',
-    selectorButton: 'editing',
-    cursor: 'pointer'
-})
-const buttonProfileExit: buttonProfile = buttonProfile({
-    type: 'button',
-    text: 'Выйти',
-    id: 'link',
-    loc: '/login',
-    selectorWrap: 'wrap-editing',
-    selectorButton: 'editing exit',
-    cursor: 'pointer'
-})
+export default class Eddit extends Block {
+    constructor(data: Record<string, string>) {
+        super({
+            styles: 'profile-page',
+            login: data.login,
+            children: {
+                buttonProfileEdit,
+                profileTypeInfo: Object.entries(data).map((info: [string, string]): Block => {
+                    return new Input({ 
+                        type: info[0],
+                        name: info[0],
+                        value: info[1],
+                        selectorInput: 'search',
+                        selecrtorLable: 'search-lable',
+                        idForLable: info[0],
+                    })
+                })
+            }
+            
+        })
+    }
 
-export const eddit = (profile: Profile) => {
-
-    const profileTypeInfoMail: input = input({
-        type: 'text',
-        name: 'email',
-        selectorInput: 'search',
-        selecrtorLable: 'search-lable',
-        idForLable: 'search',
-        value: profile.mail
-    })
-
-    const profileTypeInfoLogin: input = input({
-        type: 'text',
-        name: 'login',
-        selectorInput: 'search',
-        selecrtorLable: 'search-lable',
-        idForLable: 'search',
-        value: profile.login
-    })
-
-    const profileTypeInfoName: input = input({
-        type: 'text',
-        name: 'first_name',
-        selectorInput: 'search',
-        selecrtorLable: 'search-lable',
-        idForLable: 'search',
-        value: profile.first_name
-    })
-
-    const profileTypeInfoFirstName: input = input({
-        type: 'text',
-        name: 'second_name',
-        selectorInput: 'search',
-        selecrtorLable: 'search-lable',
-        idForLable: 'search',
-        value: profile.second_name
-    })
-
-    const profileTypeInfoPhone: input = input({
-        type: 'text',
-        name: 'phone',
-        selectorInput: 'search',
-        selecrtorLable: 'search-lable',
-        idForLable: 'search',
-        value: profile.phone
-    })
-
-    return Handlebars.compile(template)({
-        login: profile.login,
-        profileTypeInfoMail: profileTypeInfoMail,
-        profileTypeInfoLogin: profileTypeInfoLogin,
-        profileTypeInfoName: profileTypeInfoName,
-        profileTypeInfoFirstName: profileTypeInfoFirstName,
-        profileTypeInfoPhone: profileTypeInfoPhone,
-        buttonProfileEdit: buttonProfileEdit,
-        buttonProfileEditPassword: buttonProfileEditPassword,
-        buttonProfileExit: buttonProfileExit
-    })
+    render(): DocumentFragment {
+        return this.compile(template, this.props)
+    }
 }

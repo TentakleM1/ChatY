@@ -25,7 +25,7 @@ export function validation(name: string, value: string) {
     
     }
 
-    if(name === 'password' || name === 'repitpassword') {
+    if(name === 'password' || name === 'repitPassword') {
  
         if (value.length < 8 || value.length > 40) {
             errors.push('Пароль должен быть от 8 до 40 символов');
@@ -99,4 +99,3 @@ export function validation(name: string, value: string) {
     
     return errors
 }
-

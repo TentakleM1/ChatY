@@ -1,8 +1,4 @@
-import Handlebars from "handlebars"
-
-export const messageChat = ({right, messageLeftOrRight, text, timeLeftOrRight, time}) => {
-    return Handlebars.compile(
-        `<div class="message-wrap {{right}}">
+export const template = `<div class="message-wrap {{right}}">
             <div class="message {{messageLeftOrRight}}">
                 <p>
                     {{text}}
@@ -17,5 +13,4 @@ export const messageChat = ({right, messageLeftOrRight, text, timeLeftOrRight, t
                 </span> 
             </div>
         </div>`
-    )({right, messageLeftOrRight, text, timeLeftOrRight, time})
-}
+        

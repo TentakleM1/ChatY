@@ -1,5 +1,10 @@
 
-export const data = {
+type Data = {
+    chats: Record<string, any>[],
+    profile: Record<string, any>
+}
+
+export const data: Data = {
     chats: [
         {
             profile_name: 'Andray',
@@ -32,15 +37,31 @@ export const data = {
                 }
             ],
             newMessage: 0
+        },
+        {
+            profile_name: 'Gina',
+            messages: [
+                {
+                    author: 'you',
+                    message: 'Пока',
+                    date: '12:30'
+                },
+                {
+                    author: 'Gina',
+                    message: 'Ну давай',
+                    date: '12:35'
+                }
+            ],
+            newMessage: 1
         }
     ],
     profile: {
         first_name: 'Олег',
         second_name: 'Рыгыль',
         login: 'oleg',
-        mail: 'olg@mail.ru',
+        email: 'olg@mail.ru',
         phone: '+73498354443',
-        password: 'hugrskd'
+        password: 'hE3ugrskd'
 
     }
 }

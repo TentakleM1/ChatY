@@ -1,8 +1,4 @@
-import Handlebars from "handlebars"
-
-export const profileTypeInfo = ({type, info}) => {
-    return Handlebars.compile(
-        `<div class="profile-type-info">
+export const template = `<div class="profile-type-info">
             <div class="profile-type">
                 <h4>{{type}}</h4>
             </div>
@@ -10,5 +6,3 @@ export const profileTypeInfo = ({type, info}) => {
                 <span>{{info}}</span>
             </div> 
         </div>`
-    )({type, info})
-}

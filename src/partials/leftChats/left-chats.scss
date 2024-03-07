@@ -1,0 +1,24 @@
+.left-position-chats {
+    display: flex;
+    flex: 1 1 30%;
+    flex-direction: column;
+    background: $left-chat-color-background;
+    border-right: 2px solid $border-chat;
+
+    .header-wrap {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    .chat-list {
+        flex: 1 1 80%;
+        overflow: auto;
+    }
+
+    .chat-list::-webkit-scrollbar {
+        width: 0;
+    }
+}

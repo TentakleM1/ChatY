@@ -1,26 +1,49 @@
-import Handlebars from "handlebars";
-import { template } from './auth.tmpl.js';
-import { button } from '../../partials/button/button.tmpl.js';
+import { Block } from '../../core/block';
+import { template } from './auth.tmpl';
+import Button from '../../partials/button/button';
+import Input from '../../partials/input/input';
+import { getForm } from '../../core/utils/getForm/getForm';
 
-const buttonAuth: button = button({
-    id: 'btn',
-    type: 'button',
-    text: 'Авторизоваться',
-    background: 'background', 
-    cursor: 'pointer'
-})
+const input = [
+    new Input({
+        idForLable: 'login',
+        selectorInput: 'log',
+        name: 'login',
+        type: 'text',
+        selecrtorLable: 'log-lable',
+        placeholder: 'Логин',
+        value: 'Oleg'
+    }),
+    new Input({
+        idForLable: 'password',
+        selectorInput: 'log',
+        name: 'password',
+        type: 'password',
+        selecrtorLable: 'log-lable',
+        placeholder: 'Пароль',
+        value: 'QWEasd123'
+    })
+];
 
-const buttonLink: button = button({
-    id: 'link',
-    type: 'button',
-    text: 'Нет аккаунта?',
-    cursor: 'pointer',
-    loc: '/registration'
-})
+const button = [ 
+    new Button({name: 'button', text: 'Авторизоваться', events: {
+        click: getForm
+    }}),
+    new Button({name: 'buttonProfile', text: 'Нет Аккаунта ?', events: {
+        click: () => window.location.href = '/registration'
+    }}) 
+];
 
-export const auth = () => {
+export default class Auth extends Block {
+    constructor() {
+        super({children: {
+            input,
+            button
+        }
+        });
+    }
 
-    
-
-    return Handlebars.compile(template)({buttonAuth: buttonAuth, buttonLink: buttonLink})
+    render(): DocumentFragment {
+        return this.compile(template, this.props);
+    }
 }

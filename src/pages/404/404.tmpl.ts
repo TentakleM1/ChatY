@@ -7,7 +7,7 @@ export const template = `
         <div class="info-error">
             <p>Не туда попали</p>
         </div>
-        {{{buttonBack}}}
+        {{{button}}}
     </div>
 </div>
 `

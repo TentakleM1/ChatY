@@ -1,14 +1,17 @@
-import Handlebars from "handlebars";
-import { template } from './404.tmpl.js';
-import { button } from '../../partials/button/button.tmpl.js';
+import { Block } from '../../core/block';
+import Button from '../../partials/button/button';
+import { template } from './404.tmpl';
 
-const buttonBack: button = button({
-    type: 'button',
-    text: 'Назад к чатам',
-    url: "/messages", 
-    cursor: 'pointer'
-})
+export default class ErrorCode extends Block {
+    constructor() {
+        super({children: {
+            button: new Button({name: 'buttonProfile', text: 'Не туда попали', events: {
+                click: (): string => window.location.href = '/chats'
+            }})
+        }});
+    }
 
-export const error = () => {
-    return Handlebars.compile(template)({buttonBack: buttonBack})
+    render(): DocumentFragment {
+        return this.compile(template, this.props);
+    }
 }
