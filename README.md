@@ -2,8 +2,6 @@
 
 ## Netlify links
 
-[Navigation](https://yapraktikumchat.netlify.app/)
-
 - [Auth](https://yapraktikumchat.netlify.app/login)
 - [Registration](https://yapraktikumchat.netlify.app/registration)
 - [Messenger](https://yapraktikumchat.netlify.app/chats)
