@@ -1,5 +1,5 @@
-import { Block } from '../../core/block.ts';
-import { template } from './messageChat.tmpl.ts';
+import { Block } from '../../core/block';
+import { template } from './messageChat.tmpl';
 
 export default class MessageChat extends Block {
   constructor(props: Record<string, any> = {}) {
