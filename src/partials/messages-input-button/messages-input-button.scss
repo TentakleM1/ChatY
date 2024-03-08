@@ -1,0 +1,41 @@
+.messages-input-button {
+    display: flex;
+    flex: 1 1 5%;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 15px;
+    border-top: 2px solid $border-chat;
+
+    .paper-clip {
+        cursor: pointer;
+    }
+
+    .input-message-wrap {
+        display: flex;
+        flex: 1 1 100%;
+        justify-content: center;
+
+        .input-message {
+            box-sizing: border-box;
+            width: 95%;
+            padding: 12px;
+            background: $none-icon-chat;
+            border: none;
+            border-radius: 30px;
+        }
+    }
+
+    .button-message-wrap {
+        .button-message {
+            width: 38px;
+            height: 38px;
+            color: $white;
+            font-weight: bold;
+            font-size: 34px;
+            background: $button-color;
+            border: none;
+            border-radius: 100%;
+            cursor: pointer;
+        }
+    }
+}

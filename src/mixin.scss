@@ -1,0 +1,27 @@
+@mixin dontSelect {
+    user-select: none;
+}
+
+@mixin flexCenterPosition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin forCardCenterPosition {
+    width: 100vw;
+    height: 100vh;
+
+    @include flexCenterPosition;
+}
+
+@mixin buttonNone {
+    background: none;
+    border: none;
+}
+
+@mixin inputNone {
+    background: none;
+    border: none;
+    outline: none;
+}
