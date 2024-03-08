@@ -1,5 +1,5 @@
-import { Block } from '../../core/block.ts';
-import { template } from './choiсe-chat-in-list.tmpl.ts';
+import { Block } from '../../core/block';
+import { template } from './choiсe-chat-in-list.tmpl';
 
 export default class ChoiceChat extends Block {
   constructor(props: Record<string, any> = {}) {
