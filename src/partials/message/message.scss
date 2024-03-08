@@ -1,46 +1,56 @@
-.message {
-    position: relative;
-    min-width: 50px;
-    max-width: 600px;
-    padding: 10px;
-    color: $black;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 18px;
+.message-wrap {
+    display: flex;
+    margin: 10px 15px;
 
-    p {
-        margin: 0;
-    }
 
-    .time {
-        display: block;
-        float: right;
-        font-size: 11px;
-    }
+    .message {
+        position: relative;
+        min-width: 50px;
+        max-width: 600px;
+        padding: 10px;
+        color: $black;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 18px;
 
-    .time-left {
-        color: $chat-list-color;
+        p {
+            margin: 0;
+        }
 
-        svg {
-            visibility: hidden;
+        .time {
+            display: block;
+            float: right;
+            font-size: 11px;
+        }
+
+        .time-left {
+            color: $chat-list-color;
+
+            svg {
+                visibility: hidden;
+            }
+        }
+
+        .time-right {
+            color: $button-color;
+        }
+
+        .time-right::after {
+            content: url("https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=1-189&mode=design&t=K9RyQ3MwWe23hhX5-4");
         }
     }
 
-    .time-right {
-        color: $button-color;
+    .message-left {
+        background: $left-chats-list;
+        border-radius: 0 10px 10px;
     }
 
-    .time-right::after {
-        content: url("https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?type=design&node-id=1-189&mode=design&t=K9RyQ3MwWe23hhX5-4");
+    .message-right {
+        background: $right-chat;
+        border-radius: 10px 10px 0;
     }
 }
 
-.message-left {
-    background: $left-chats-list;
-    border-radius: 0 10px 10px;
-}
-
-.message-right {
-    background: $right-chat;
-    border-radius: 10px 10px 0;
+.right {
+    justify-content: flex-end;
 }

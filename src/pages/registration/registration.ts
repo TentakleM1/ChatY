@@ -1,8 +1,8 @@
-import { Block } from '../../core/block';
-import { template } from './registration.tmpl';
-import Button from '../../partials/button/button';
-import { getForm } from '../../core/utils/getForm/getForm';
-import Input from '../../partials/input/input';
+import { Block } from '../../core/block.ts';
+import { template } from './registration.tmpl.ts';
+import Button from '../../partials/button/button.ts';
+import { getForm } from '../../core/utils/getForm/getForm.ts';
+import Input from '../../partials/input/input.ts';
 
 const input = [
   new Input({

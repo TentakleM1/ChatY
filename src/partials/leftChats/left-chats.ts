@@ -1,8 +1,8 @@
-import { Block } from '../../core/block';
-import { template } from './left-chats.tmpl';
-import Button from '../button/button';
-import Input from '../input/input';
-import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list';
+import { Block } from '../../core/block.ts';
+import { template } from './left-chats.tmpl.ts';
+import Button from '../button/button.ts';
+import Input from '../input/input.ts';
+import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list.ts';
 
 export default class LeftChats extends Block {
   constructor(data: Record<string, any>[]) {
@@ -29,11 +29,13 @@ export default class LeftChats extends Block {
           selecrtorLable: 'search-lable',
         }),
         chats: data.map((chat: Record<string, any>) => {
-          const { profile_name, messages, newMessage } = chat;
+          const { profile_name, messages, newMessage, img } = chat;
           const { message, date } = messages[messages.length - 1];
           return new ChoiceChat({
             url: profile_name,
             name: profile_name,
+            dontIconChat: profile_name,
+            iconChat: img,
             message,
             data: date,
             new: newMessage,

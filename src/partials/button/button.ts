@@ -1,5 +1,5 @@
-import { Block } from '../../core/block';
-import { button, buttonProfile } from './button.tmpl';
+import { Block } from '../../core/block.ts';
+import { button, buttonProfile } from './button.tmpl.ts';
 
 export default class Button extends Block {
   constructor(props: Record<string, any>) {

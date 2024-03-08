@@ -1,6 +1,6 @@
-export const template = `<div class="chat-wrap" onclick="window.location.href='/{{url}}'">
+export const template = `<main class="chat-wrap" onclick="window.location.href='/{{url}}'">
             <div class="icon-chat">
-                <img class="icon" src="{{iconChat}}" alt="">
+                <img class="icon" src="{{iconChat}}" alt="{{dontIconChat}}">
             </div>
             <div class="name-info">
                 <div class="name-chat">
@@ -26,4 +26,4 @@ export const template = `<div class="chat-wrap" onclick="window.location.href='/
                     </span>
                 </div>
             </div>      
-        </div>`;
+        </main>`;

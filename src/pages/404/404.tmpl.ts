@@ -1,5 +1,5 @@
 export const template = `
-<div class="wrap-error-404">
+<main class="wrap-error-404">
     <div class="block-error">
         <div class="number-error-404">
             <h2>404</h2>
@@ -9,5 +9,5 @@ export const template = `
         </div>
         {{{button}}}
     </div>
-</div>
+</main>
 `;

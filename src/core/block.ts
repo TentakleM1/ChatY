@@ -134,6 +134,10 @@ export class Block<P extends Record<string, any> = any> {
 
   private _render() {
     const block: any = this.render();
+
+    this._removeEvents();
+    this._element.innerHTML = ''; // удаляем предыдущее содержимое
+
     // Этот небезопасный метод для упрощения логики
     // Используйте шаблонизатор из npm или напишите свой безопасный
     // Нужно не в строку компилировать (или делать это правильно),
@@ -141,6 +145,17 @@ export class Block<P extends Record<string, any> = any> {
     this._element.append(block);
 
     this._setEvents();
+  }
+
+  private _removeEvents() {
+    const { events = {} } = this.props;
+        Object.keys((events as Object)).forEach((eventName) => {
+            if (eventName === 'blur') {
+                this._element.querySelector('input')?.removeEventListener(eventName, events[eventName]);
+            } else {
+                this._element.removeEventListener(eventName, events[eventName]);
+            }
+        });
   }
 
   // Может переопределять пользователь, необязательно трогать

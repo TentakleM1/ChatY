@@ -1,4 +1,4 @@
-export const template = `<div class="back-chat">
+export const template = `<main class="back-chat">
         <div class="wrap-back">
             <button class="back" onclick="window.location.href='/chats'">
                 <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" transform='rotate(180)'>
@@ -6,8 +6,8 @@ export const template = `<div class="back-chat">
                 </svg>
             </button>
         </div>
-    </div>
-    <div class="profile-wrap">
+    </main>
+    <main class="profile-wrap">
         <div class="profile">
             <div class="profile-photo-name">
                 <div class="profile-photo">
@@ -33,4 +33,4 @@ export const template = `<div class="back-chat">
                 </div>
             </form>
         </div>
-    </div>`;
+    </main>`;

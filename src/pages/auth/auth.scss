@@ -1,7 +1,28 @@
 .auth-page {
     @include forCardCenterPosition;
 
+    .card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 340px;
+        padding: 1rem;
+        background: $white;
+        border-radius: 10px;
+        box-shadow: 0 0 5px $input-underline;
+
+        .wrap-capital-word {
+            margin: 2rem;
+        }
+    }
+
     .input-wrap:nth-child(3n) {
         margin-bottom: 8rem;
+    }
+
+    .form {
+        @include flexCenterPosition;
+    
+        flex-direction: column;
     }
 }

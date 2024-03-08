@@ -8,6 +8,7 @@ export const data: Data = {
     chats: [
         {
             profile_name: 'Andray',
+            img: 'картинка',
             messages: [
                 {
                     author: 'you',
@@ -24,6 +25,7 @@ export const data: Data = {
         },
         {
             profile_name: 'Sofia',
+            img: 'картинка',
             messages: [
                 {
                     author: 'Sofia',
@@ -40,6 +42,7 @@ export const data: Data = {
         },
         {
             profile_name: 'Gina',
+            img: 'картинка',
             messages: [
                 {
                     author: 'you',
