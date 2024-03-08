@@ -1,8 +1,8 @@
-import { Block } from '../../core/block.ts';
-import { template } from './left-chats.tmpl.ts';
-import Button from '../button/button.ts';
-import Input from '../input/input.ts';
-import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list.ts';
+import { Block } from '../../core/block';
+import { template } from './left-chats.tmpl';
+import Button from '../button/button';
+import Input from '../input/input';
+import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list';
 
 export default class LeftChats extends Block {
   constructor(data: Record<string, any>[]) {
