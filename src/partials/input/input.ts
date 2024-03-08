@@ -1,6 +1,6 @@
-import { Block } from '../../core/block.ts';
-import { template } from './input.tmpl.ts';
-import { validation } from '../../core/utils/validation/validation.ts';
+import { Block } from '../../core/block';
+import { template } from './input.tmpl';
+import { validation } from '../../core/utils/validation/validation';
 
 export default class Input extends Block {
   constructor(props: Record<string, any> = {}) {
