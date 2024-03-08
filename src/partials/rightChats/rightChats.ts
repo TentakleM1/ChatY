@@ -1,7 +1,7 @@
-import { Block } from '../../core/block.ts';
-import { template } from './rightChats.tmpl.ts';
-import MessageInputButton from '../messages-input-button/messages-input-button.ts';
-import MessageChat from '../message/messageChat.ts';
+import { Block } from '../../core/block';
+import { template } from './rightChats.tmpl';
+import MessageInputButton from '../messages-input-button/messages-input-button';
+import MessageChat from '../message/messageChat';
 
 function chats(data: Record<string, any>, local: string): MessageChat[] {
   const messageChats: MessageChat[] = [];
