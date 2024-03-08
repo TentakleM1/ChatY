@@ -1,5 +1,5 @@
-import { Block } from '../../core/block.ts';
-import { template } from './data.tmpl.ts';
+import { Block } from '../../core/block';
+import { template } from './data.tmpl';
 
 export default class Data extends Block {
   constructor(props: Record<string, any> = {}) {
