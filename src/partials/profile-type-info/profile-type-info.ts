@@ -1,5 +1,5 @@
-import { Block } from '../../core/block.ts';
-import { template } from './profile-type-info.tmpl.ts';
+import { Block } from '../../core/block';
+import { template } from './profile-type-info.tmpl';
 
 export default class ProfileTypeInfo extends Block {
   constructor(props: Record<string, any>) {
