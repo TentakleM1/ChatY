@@ -28,19 +28,20 @@ export default class LeftChats extends Block {
           selectorInput: 'search',
           selecrtorLable: 'search-lable',
         }),
-        chats: data.map((chat: Record<string, any>) => {
-          const { profile_name, messages, newMessage, img } = chat;
-          const { message, date } = messages[messages.length - 1];
-          return new ChoiceChat({
-            url: profile_name,
-            name: profile_name,
-            dontIconChat: profile_name,
-            iconChat: img,
-            message,
-            data: date,
-            new: newMessage,
-          });
-        }),
+        chats: new ChoiceChat({ url: 'sofia', name: 'dima', dontIconChat: 'dima', message: 'hi', data: '21' }),
+        // data.map((chat: Record<string, any>) => {
+        //   const { profile_name, messages, newMessage, img } = chat;
+        //   const { message, date } = messages[messages.length - 1];
+        //   return new ChoiceChat({
+        //     url: profile_name,
+        //     name: profile_name,
+        //     dontIconChat: profile_name,
+        //     iconChat: img,
+        //     message,
+        //     data: date,
+        //     new: newMessage,
+        //   });
+        // }), незабыть убрать
       },
     });
   }

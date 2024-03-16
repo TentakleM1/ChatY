@@ -3,6 +3,8 @@ import Button from '../../partials/button/button';
 import { Block } from '../../core/block';
 import ProfileTypeInfo from '../../partials/profile-type-info/profile-type-info';
 
+import Store, { StoreEvents } from "../../core/store/Store";
+
 const buttonProfile = [
   new Button({
     name: 'buttonProfile',

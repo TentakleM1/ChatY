@@ -10,54 +10,15 @@ import render from './src/core/utils/render/render';
 
 import { data } from './public/db/data';
 
-document.addEventListener("DOMContentLoaded", () => {
-    const location = window.location.pathname;
+document.addEventListener("DOMContentLoaded", async () => {
 
-    const auth: Auth = new Auth();
-    const errorCode: ErrorCode = new ErrorCode();
-    const registration: Registration = new Registration();
-    
-    const page = (path: string) => {
-        if(path === '/' || path === '') {
+    const router = new Router("#app");
 
-            window.location.pathname = '/login';
-        
-        } else if(path === '/login') {
-            
-            render('#app', auth);
-            
-        } else if(path === '/registration') {
-
-            render('#app', registration);
-
-        } else if(path === '/chats') {
-
-            render('#app', new Chats(data.chats, path));
-
-        } else if(path === '/profile') {
-
-            render('#app', new Profile(data.profile));
-
-        } else if(path === '/profile/eddit') {
-
-            render('#app', new Eddit(data.profile))
-
-        } else {
-            const names = data.chats.map((name) => name.profile_name)
-            const name = path.split('/').join('')
-
-            if(names.includes(name)) {
-                render('#app', new Chats(data.chats, path))
-            } else {
-                render('#app', errorCode)
-            }
-
-        }
-
-    }
-
-    page(location)
-
+    router 
+        .use("/", Auth)
+        .use("/registration", Registration)
+        .use("/chats", Chats)
+        .start();
 
 })
 
