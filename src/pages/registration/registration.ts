@@ -1,8 +1,24 @@
-import { Block } from '../../core/block.ts';
-import { template } from './registration.tmpl.ts';
-import Button from '../../partials/button/button.ts';
-import { getForm } from '../../core/utils/getForm/getForm.ts';
-import Input from '../../partials/input/input.ts';
+import { Block } from '../../core/block';
+import { template } from './registration.tmpl';
+import Button from '../../partials/button/button';
+import { getForm } from '../../core/utils/getForm/getForm';
+import Input from '../../partials/input/input';
+import { ISignupData } from '../../core/api/AuthApi';
+import AuthController from '../../core/controllers/AuthController';
+
+function onButton() {
+  const authController = new AuthController();
+  const data: ISignupData = {
+    data: getForm()
+  };
+
+  if(data) {
+    authController.singup(data);
+  } else {
+    return false
+  }
+  
+}
 
 const input = [
   new Input({
@@ -75,14 +91,14 @@ const button = [
     name: 'button',
     text: 'Зарегестрироваться',
     events: {
-      click: getForm,
+      click: onButton,
     },
   }),
   new Button({
     name: 'buttonProfile',
     text: 'Войти',
     events: {
-      click: () => window.location.href = '/login',
+      click: () => window.location.href = '/',
     },
   }),
 ];
@@ -95,6 +111,7 @@ export default class Registration extends Block {
         button,
       },
     });
+  
   }
 
   render(): DocumentFragment {

@@ -2,9 +2,7 @@ import { Block } from '../../core/block';
 import { template } from './chats.tmpl';
 import LeftChats from '../../partials/leftChats/left-chats';
 import RightChats from '../../partials/rightChats/rightChats';
-import Store, { StoreEvents } from '../../core/store/Store';
-
-const store = new Store();
+import store, { StoreEvents } from '../../core/store/Store';
 
 export default class Chats extends Block {
   constructor(data: Record<string, string>[], local: string) {

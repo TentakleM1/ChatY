@@ -18,6 +18,6 @@ export function getForm() {
   if (checkData.length != 0) {
     alert(checkData);
   } else {
-    console.log(data);
+    return data;
   }
 }

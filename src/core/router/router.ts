@@ -1,13 +1,20 @@
-import { Block } from '../block';
 import Route from './route';
 
 export class Router {
 
-    routes: Block[] = []
+    routes: Route[] = [];
+
+    history = window.history;
+
+    _currentRoute: Route | null = null;
+
+    _rootQuery: string = '#app';
+
+    __instance?: Router;
 
     constructor(rootQuery: string) {
-        if(Router.__instance) {
-            return Router.__instance;
+        if(this.__instance) {
+            return this.__instance;
         }
 
         this.routes;
@@ -18,7 +25,7 @@ export class Router {
         Router.__instance = this
     }
 
-    public use(path: string, block: Block)  {
+    public use(path: string, block: any)  {
         const route: Route = new Route(path, block, { rootQuery: this._rootQuery });
         this.routes.push(route);
 
@@ -27,7 +34,7 @@ export class Router {
 
     public start() {
         window.onpopstate = event => {
-            this._onRoute(event.currentTarget.location.pathname);
+            this._onRoute(event.currentTarget?.location.pathname);
           };
       
           this._onRoute(window.location.pathname);
@@ -36,12 +43,14 @@ export class Router {
     private _onRoute(pathname: string) {
         const route = this.getRoute(pathname);
 
-        if (this._currentRoute) {
+        if (route && this._currentRoute) {
             this._currentRoute.leave();
         }
 
-        this._currentRoute = route;
-        route.render(route, pathname);
+        if(route) {
+            this._currentRoute = route;
+            route.render();
+        }
     }
 
     public go(path: string) {

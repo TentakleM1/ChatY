@@ -1,9 +1,17 @@
-import { Block } from "../block";
 import render  from "../utils/render/render";
 import isEqual from "../utils/isEqual/isEqual";
 
 export default class Route<P extends Record<string, any> = any> {
-    constructor(pathname: string, view: Block, props: P) {
+
+    _pathname: string;
+
+    _blockClass: any;
+
+    _block: any | null;
+
+    _props: P;
+
+    constructor(pathname: string, view: any, props: P) {
         this._pathname = pathname;
         this._blockClass = view;
         this._block = null;

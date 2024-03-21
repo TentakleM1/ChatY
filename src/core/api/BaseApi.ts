@@ -1,4 +1,13 @@
+import HTTPTransport from "../HTTPTransport/HTTPTransport";
+
 export class BaseAPI {
+
+  protected http: HTTPTransport;
+
+  constructor(point: string) {
+    this.http = new HTTPTransport(point);
+  }
+
     create() {
       throw new Error('Not implemented');
     }

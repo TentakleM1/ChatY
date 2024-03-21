@@ -9,29 +9,33 @@ const METHODS = {
     DELETE: 'DELETE',
 };
 
-const BASE_URL = 'https://ya-praktikum.tech/api/v2';
-
 export default class HTTPTransport {
 
-    public get = (url: string, options: Options = {}) => {
-             
-            return this.request(url, {...options, method: METHODS.GET}, options.timeout);
+        static BASE_URL = 'https://ya-praktikum.tech/api/v2';
+        point: string;
+
+        constructor(point: string) {
+                this.point = `${HTTPTransport.BASE_URL}${point}`
+        }
+
+    public get = (url: string, options: Options = {}) => {      
+            return this.request(options ? `${this.point}${url}` : `${this.point}${url}?${queryStringify(options.data)}`, {...options, method: METHODS.GET}, options.timeout);
     };
 
     public post = (url: string, options: Options = {}) => {
-            return this.request(url, {...options, method: METHODS.POST}, options.timeout);
+            return this.request(`${this.point}${url}`, {...options, method: METHODS.POST}, options.timeout);
     };
 
     public put = (url: string, options: Options = {}) => {
-            return this.request(url, {...options, method: METHODS.PUT}, options.timeout);
+            return this.request(`${this.point}${url}`, {...options, method: METHODS.PUT}, options.timeout);
     };
 
     public delete = (url: string, options: Options = {}) => { 
-            return this.request(url, {...options, method: METHODS.DELETE}, options.timeout);
+            return this.request(`${this.point}${url}`, {...options, method: METHODS.DELETE}, options.timeout);
     };
 
     private request = (url: string, options: Options = {}, timeout = 5000) => {
-            const {headers = {}, method, data, retries = 3} = options;
+            const {method, data, retries = 3} = options;
 
             return new Promise(function(resolve, reject) {
                     if (!method) {
@@ -40,21 +44,23 @@ export default class HTTPTransport {
                     }
 
                 const xhr = new XMLHttpRequest();
-                    const isGet = method === METHODS.GET;
+                const isGet = method === METHODS.GET;
 
-                xhr.open(
-                            method, 
-                            isGet && !!data
-                                    ? `${BASE_URL}${url}?${queryStringify(data)}`
-                                    : `${BASE_URL}${url}`,
-                    );
+                xhr.open(method, url);
 
-                    Object.keys(headers).forEach(key => {
-                            xhr.setRequestHeader(key, headers[key]);
-                    });
+                if(data) {
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                }
+
             
-                xhr.onload = function() {
-                      resolve(xhr);
+                xhr.onreadystatechange = () => {
+                        if (xhr.readyState === XMLHttpRequest.DONE) {
+                            if (xhr.status < 400) {
+                                resolve(xhr.response);
+                            } else {
+                                reject(xhr.response);
+                            }
+                        }
                 };
             
                 xhr.onabort = reject;
@@ -62,12 +68,15 @@ export default class HTTPTransport {
             
                 xhr.timeout = timeout;
                 xhr.ontimeout = reject;
-                    
-                  if (isGet || !data) {
+                
+                xhr.responseType = 'json';
+                xhr.withCredentials = true;
+
+                if (isGet || !data) {
                         xhr.send();
-                    } else {
-                            xhr.send(data);
-                    }
+                } else {
+                        xhr.send(JSON.stringify(data));
+                }
           });
     };
 }

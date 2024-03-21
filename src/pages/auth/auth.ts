@@ -3,6 +3,21 @@ import { template } from './auth.tmpl';
 import Button from '../../partials/button/button';
 import Input from '../../partials/input/input';
 import { getForm } from '../../core/utils/getForm/getForm';
+import { ISigninData } from '../../core/api/AuthApi';
+import AuthController from '../../core/controllers/AuthController';
+
+
+export const authController = new AuthController();
+
+function onButton() {
+  const data: ISigninData = {
+    data: getForm()
+  };
+
+  if(data) {
+    authController.singin(data);
+  }
+}
 
 const input = [
   new Input({
@@ -30,14 +45,14 @@ const button = [
     name: 'button',
     text: 'Авторизоваться',
     events: {
-      click: getForm,
+      click: onButton,
     },
   }),
   new Button({
     name: 'buttonProfile',
     text: 'Нет Аккаунта ?',
     events: {
-      click: () => window.location.href = '/registration',
+      click: () => window.location.href = '/signup',
     },
   }),
 ];

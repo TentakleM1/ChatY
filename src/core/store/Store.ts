@@ -5,16 +5,21 @@ export enum StoreEvents {
     Updated = 'updated',
   }
 
-export default class Store extends EventBus {
+class Store extends EventBus {
     private state: unknown = {};
   
-    public getState() {
-      return state;
+    public getState(): Record<string, unknown> {
+      return this.state;
     };
   
     public set(path: string, value: unknown) {
-      set(this.state, path, value);
-
-      this.emit(StoreEvents.Updated);
+      try {
+        set(this.state, path, value);
+        this.emit(StoreEvents.Updated, this.getState());
+      } catch(e) {
+        console.log(e);
+      }
     };
   } 
+
+export default new Store()
