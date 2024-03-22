@@ -2,22 +2,18 @@ import { Block } from '../../core/block';
 import { template } from './chats.tmpl';
 import LeftChats from '../../partials/leftChats/left-chats';
 import RightChats from '../../partials/rightChats/rightChats';
-import store, { StoreEvents } from '../../core/store/Store';
 
 export default class Chats extends Block {
-  constructor(data: Record<string, string>[], local: string) {
+  constructor() {
     super({
       styles: 'chats-page',
       children: {
-        leftChats: new LeftChats(data),
-        rightChats: new RightChats(data, local),
+        leftChats: new LeftChats({}),
+        rightChats: new RightChats({}, ''),
       },
     });
 
-    store.on(StoreEvents.Updated, () => {
-      // вызываем обновление компонента, передав данные из хранилища
-      this.setProps(store.getState());
-    });
+    
   }
 
   render(): DocumentFragment {

@@ -4,19 +4,18 @@ import Button from '../../partials/button/button';
 import Input from '../../partials/input/input';
 import { getForm } from '../../core/utils/getForm/getForm';
 import { ISigninData } from '../../core/api/AuthApi';
-import AuthController from '../../core/controllers/AuthController';
+import { router } from '../../core/router/router';
+import { Routes } from '../../../main';
+import { AuthController } from '../../core/controllers/AuthController';
 
 
-export const authController = new AuthController();
-
-function onButton() {
-  const data: ISigninData = {
+async function onButton() {
+  const info: ISigninData = {
     data: getForm()
   };
 
-  if(data) {
-    authController.singin(data);
-  }
+  await AuthController.signin(info as unknown as ISigninData);
+  
 }
 
 const input = [
@@ -52,7 +51,7 @@ const button = [
     name: 'buttonProfile',
     text: 'Нет Аккаунта ?',
     events: {
-      click: () => window.location.href = '/signup',
+      click: () => router.go(Routes.Register),
     },
   }),
 ];

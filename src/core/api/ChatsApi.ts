@@ -1,11 +1,13 @@
 import BaseAPI from "./BaseApi";
-import HTTPTransport from "../HTTPTransport/HTTPTransport";
 
-const chatsAPIInstance = new HTTPTransport();
+class ChatsAPI extends BaseAPI {
+    constructor() {
+        super('/chats');
+    }
 
-export default class ChatsAPI extends BaseAPI {
-
-    getChats() {
-        return chatsAPIInstance.get('/chats');
+    public getChats() {
+        return this.http.get('');
     }
 }
+
+export default new ChatsAPI();

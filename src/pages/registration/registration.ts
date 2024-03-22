@@ -4,18 +4,15 @@ import Button from '../../partials/button/button';
 import { getForm } from '../../core/utils/getForm/getForm';
 import Input from '../../partials/input/input';
 import { ISignupData } from '../../core/api/AuthApi';
-import AuthController from '../../core/controllers/AuthController';
+import { AuthController } from '../../core/controllers/AuthController';
 
-function onButton() {
-  const authController = new AuthController();
-  const data: ISignupData = {
+async function onButton() {
+  const info: ISignupData = {
     data: getForm()
   };
 
-  if(data) {
-    authController.singup(data);
-  } else {
-    return false
+  if(info.data) {
+    await AuthController.signup(info as unknown as ISignupData);
   }
   
 }

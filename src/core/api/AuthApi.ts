@@ -42,7 +42,7 @@ class AuthApi extends BaseAPI {
         return this.http.post('/logout');
     }
 
-    public getUser() {
+    public getUser(): Promise<IUser> {
         return this.http.get('/user');
     }
 }

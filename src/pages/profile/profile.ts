@@ -2,25 +2,14 @@ import { template } from './profile.tmpl';
 import Button from '../../partials/button/button';
 import { Block } from '../../core/block';
 import ProfileTypeInfo from '../../partials/profile-type-info/profile-type-info';
-
-import store, { StoreEvents } from "../../core/store/Store";
+import { AuthController } from '../../core/controllers/AuthController';
 import { connect } from '../../core/utils/connect/connect';
-import { authController } from '../auth/auth';
+import Store, { StoreEvents } from '../../core/store/Store';
 
-
-const mapStateToProps = (state: any) => ({
-  login: state.user?.login,
-  first_name: state.user?.first_name,
-  second_name: state.user?.second_name,
-  phone: state.user?.phone,
-  email: state.user?.email,
-  display_name: state.user?.display_name,
-  avatar: state.user?.avatar,
-});
 
 async function onButtonExit() {
-    try {
-    await authController.logout();
+  try {
+    await AuthController.logout(); 
   } catch(e) {
     console.log(e);
   }
@@ -56,20 +45,19 @@ const buttonProfile = [
 ];
 
 export default class Profile extends Block {
-  constructor(data: Record<string, string>) {
+  constructor(props: Record<string, string>) {
     super({
       styles: 'profile-page',
-      login: data.login,
+      login: props['Логин'],
       children: {
         buttonProfile,
-        profileInfo: Object.entries(data).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
+        profileInfo: Object.entries(props).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
       },
     });
 
-    store.on(StoreEvents.Updated, () => {
-      this.setProps(store.getState())
-    });
-
+    Store.on(StoreEvents.Updated, () => {
+      this.setProps(Store.getState());
+    })
   }
 
   render(): DocumentFragment {
@@ -77,5 +65,15 @@ export default class Profile extends Block {
   }
 }
 
-connect(state => ( { user: state.user || {} } ) );
+const mapStateToProps = (state: any) => {
+  return {
+    'Логин': state.user.login,
+    'Почта': state.user.email,
+    'Имя': state.user.first_name,
+    'Фамилия': state.user.second_name,
+    'Телефон': state.user.phone,
+
+  }
+}
+ 
 export const ProfilePage = connect(mapStateToProps)(Profile);

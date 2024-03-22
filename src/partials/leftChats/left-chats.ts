@@ -1,11 +1,14 @@
-import { Block } from '../../core/block.ts';
-import { template } from './left-chats.tmpl.ts';
-import Button from '../button/button.ts';
-import Input from '../input/input.ts';
-import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list.ts';
+import { Block } from '../../core/block';
+import { template } from './left-chats.tmpl';
+import Button from '../button/button';
+import Input from '../input/input';
+import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list';
+import Store, { StoreEvents } from '../../core/store/Store';
+import { connect } from '../../core/utils/connect/connect';
+import { ChatsController } from '../../core/controllers/ChatsController';
 
-export default class LeftChats extends Block {
-  constructor(data: Record<string, any>[]) {
+class LeftChats extends Block {
+  constructor(props: Record<string, any>[]) {
     super({
       styles: 'left-position-chats',
       children: {
@@ -28,7 +31,7 @@ export default class LeftChats extends Block {
           selectorInput: 'search',
           selecrtorLable: 'search-lable',
         }),
-        chats: new ChoiceChat({ url: 'sofia', name: 'dima', dontIconChat: 'dima', message: 'hi', data: '21' }),
+        chats: new ChoiceChat({ ...props }),
         // data.map((chat: Record<string, any>) => {
         //   const { profile_name, messages, newMessage, img } = chat;
         //   const { message, date } = messages[messages.length - 1];
@@ -44,9 +47,21 @@ export default class LeftChats extends Block {
         // }), незабыть убрать
       },
     });
+
+    Store.on(StoreEvents.Updated, () => {
+      this.setProps(Store.getState());
+    })
+
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+const mapStateToProps = (state: any) => {
+  console.log(state)
+  return { name: 'dima' }
+}
+
+export default connect(mapStateToProps)(LeftChats);

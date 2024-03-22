@@ -91,11 +91,11 @@ export class Block<P extends Record<string, any> = any> {
   }
 
   private _componentDidMount() {
-    // this.componentDidMount();s
+    this.componentDidMount();
   }
 
   // Может переопределять пользователь, необязательно трогать
-  public componentDidMount(_ldProps: Object) {}
+  public componentDidMount(_OldProps: Object) {}
 
   public dispatchComponentDidMoun() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);

@@ -1,45 +1,45 @@
 import authApi, { ISigninData, ISignupData } from "../api/AuthApi";
 import store from "../store/Store";
-import { router, Routes } from "../../../main";
+import { router } from '../../core/router/router';
+import { Routes } from '../../../main.js';
 
-export default class AuthController {
-
-    public async getUser() {
+export class AuthController {
+    static async getUser() {
         const user = await authApi.getUser();
+        console.log(user);
         store.set('user', user);
     }
 
-    public async singin(data: ISigninData) {
+    static async signin(data: ISigninData) {
         try {
-            await authApi.signin(data)
+            await authApi.signin(data);
             await this.getUser();
             router.go(Routes.Chats);
-            
-        } catch(e) {
-            console.log(e);
+        } catch (e) {
+            if (e instanceof Error && 'reason' in e) console.error(e.reason);
+            console.error(e);
         }
     }
 
-    public async singup(data: ISignupData) {
-        try{
+    static async signup(data: ISignupData) {
+        try {
             await authApi.signup(data);
             await this.getUser();
-            router.go(Routes.Login);
-
-        } catch(e) {
-            console.log(e)
+            router.go(Routes.Chats);
+        } catch (e) {
+            if (e instanceof Error && 'reason' in e) console.error(e.reason);
+            console.error(e);
         }
     }
 
-    public async logout() {
+    static async logout() {
         try {
             await authApi.logout();
             store.set('user', undefined);
             router.go(Routes.Login);
         } catch (e) {
-            console.log(e);
+            if (e instanceof Error && 'reason' in e) console.error(e.reason);
+            console.error(e);
         }
     }
-
-
 }

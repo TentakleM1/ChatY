@@ -1,11 +1,9 @@
 import ChatsAPI from "../api/ChatsApi";
+import Store from "../store/Store";
 
-const chatsApi = new ChatsAPI()
-
-export default class ChatsController {
-    public getChats() {
-        chatsApi.getChats()
-            .then(data => JSON.parse(data))
-            .then(item => console.log(item))
+export class ChatsController {
+    static async getChats() {
+      const chats = await ChatsAPI.getChats(); 
+      Store.set('chats', chats); 
     }
 }

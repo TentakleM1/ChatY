@@ -2,10 +2,11 @@ import ErrorCode from './src/pages/404/404';
 import Auth, { authController } from './src/pages/auth/auth';
 import Registration from './src/pages/registration/registration';
 import Chats from './src/pages/chats/chats';
-import { ProfilePage } from './src/pages/profile/profile'
+import Profile, { ProfilePage } from './src/pages/profile/profile'
 import Eddit from './src/pages/eddit/eddit'
 
-import { Router } from './src/core/router/router'
+import { router } from './src/core/router/router';
+import { AuthController } from './src/core/controllers/AuthController';
 
 export enum Routes {
     Login = '/',
@@ -17,18 +18,38 @@ export enum Routes {
     ErrorPage = '/error',
 }
 
-export const router = new Router("#app");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-    router 
+    router
+        .use(Routes.Chats, Chats)
         .use(Routes.Login, Auth)
         .use(Routes.Register, Registration)
-        .use(Routes.Chats, Chats)
         .use(Routes.Profile, ProfilePage)
-        .use(Routes.ProfileEdit, Eddit)
-        .use(Routes.ErrorPage, ErrorCode);
 
-    router.start();
-})
+    let isProtectedRoute = true;
+
+    switch (window.location.pathname) {
+    case Routes.Login:
+    case Routes.Register:
+        isProtectedRoute = false;
+        break;
+    default:
+        break;
+    }
+
+    try {
+        await AuthController.getUser();
+        router.start();
+        if (!isProtectedRoute) {
+            router.go(Routes.Chats);
+        }
+    } catch (error) {
+        router.start();
+        if (isProtectedRoute) {
+            router.go(Routes.Login);
+        }
+    }
+    
+});
 
