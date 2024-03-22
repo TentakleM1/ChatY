@@ -1,6 +1,7 @@
 import Handlebars from 'handlebars';
 import { nanoid } from 'nanoid';
 import EventBus from './EventBus/eventBus';
+import isEqual from './utils/isEqual/isEqual';
 
 type Object = Record<string, any>
 
@@ -99,6 +100,13 @@ export class Block<P extends Record<string, any> = any> {
 
   public dispatchComponentDidMoun() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+
+    if(this.children) {
+      Object.values(this.children).forEach((child) => {
+        child.dispatchComponentDidMoun();
+      });
+    }
+
   }
 
   private _componentDidUpdate(oldProps: Object, newProps: Object) {
@@ -106,11 +114,11 @@ export class Block<P extends Record<string, any> = any> {
     if (response) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
     }
-  }
+  } // с обновами для пропсов
 
   // Может переопределять пользователь, необязательно трогать
   public componentDidUpdate(_oldProps: Object, _newProps: Object) {
-    return true;
+    return isEqual(_oldProps, _newProps);
   }
 
   public setProps = (nextProps: Object) => {
@@ -145,6 +153,7 @@ export class Block<P extends Record<string, any> = any> {
     this._element.append(block);
 
     this._setEvents();
+    this.dispatchComponentDidMoun();
   }
 
   private _removeEvents() {
@@ -209,7 +218,7 @@ export class Block<P extends Record<string, any> = any> {
   private _makePropsProxy(props: P): P {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
-    // const self = this;
+    const self = this; //тут обратно поставил self
     const proxyProps = new Proxy(props, {
       get(target: any, prop) {
         return target[prop];
@@ -217,6 +226,7 @@ export class Block<P extends Record<string, any> = any> {
 
       set(target, prop, value) {
         target[prop] = value;
+        self.eventBus().emit(Block.EVENTS.FLOW_CDM, { ...target }, target);
         return true;
       },
 

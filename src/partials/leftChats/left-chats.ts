@@ -31,27 +31,29 @@ class LeftChats extends Block {
           selectorInput: 'search',
           selecrtorLable: 'search-lable',
         }),
-        chats: new ChoiceChat({ ...props }),
-        // data.map((chat: Record<string, any>) => {
-        //   const { profile_name, messages, newMessage, img } = chat;
-        //   const { message, date } = messages[messages.length - 1];
-        //   return new ChoiceChat({
-        //     url: profile_name,
-        //     name: profile_name,
-        //     dontIconChat: profile_name,
-        //     iconChat: img,
-        //     message,
-        //     data: date,
-        //     new: newMessage,
-        //   });
-        // }), незабыть убрать
+        // chats: chats.map((chat: Record<string, any>) => {
+         
+        //   return new ChoiceChat({name: chat.title});
+        //   // const { profile_name, messages, newMessage, img } = chat;
+        //   // const { message, date } = messages[messages.length - 1];
+        //   // return new ChoiceChat({
+        //   //   url: profile_name,
+        //   //   name: profile_name,
+        //   //   dontIconChat: profile_name,
+        //   //   iconChat: img,
+        //   //   message,
+        //   //   data: date,
+        //   //   new: newMessage,
+        //   // });
+        // }), 
       },
     });
 
     Store.on(StoreEvents.Updated, () => {
       this.setProps(Store.getState());
-    })
+    });
 
+    console.log(props)
   }
 
   render() {
@@ -60,8 +62,7 @@ class LeftChats extends Block {
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state)
-  return { name: 'dima' }
+  return state
 }
 
 export default connect(mapStateToProps)(LeftChats);

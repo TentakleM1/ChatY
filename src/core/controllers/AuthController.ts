@@ -6,7 +6,6 @@ import { Routes } from '../../../main.js';
 export class AuthController {
     static async getUser() {
         const user = await authApi.getUser();
-        console.log(user);
         store.set('user', user);
     }
 
