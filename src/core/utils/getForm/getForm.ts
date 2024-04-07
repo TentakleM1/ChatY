@@ -4,8 +4,6 @@ export function getForm() {
   const data: Record<string, string> = {};
   const checkData: Record<string, string>[] = [];
 
-  const form = document.getElementById('form')
-
   const allInput = document.querySelectorAll('input');
 
   allInput.forEach((item) => {

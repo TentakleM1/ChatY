@@ -2,11 +2,15 @@ import ErrorCode from './src/pages/404/404';
 import Auth, { authController } from './src/pages/auth/auth';
 import Registration from './src/pages/registration/registration';
 import Chats from './src/pages/chats/chats';
-import Profile, { ProfilePage } from './src/pages/profile/profile'
+import Profile from './src/pages/profile/profile'
 import Eddit from './src/pages/eddit/eddit'
 
 import { router } from './src/core/router/router';
 import { AuthController } from './src/core/controllers/AuthController';
+import Store, { StoreEvents } from './src/core/store/Store';
+import render from './src/core/utils/render/render';
+
+Store.on(StoreEvents.Updated, () => {console.log('work')})
 
 export enum Routes {
     Login = '/',
@@ -14,10 +18,9 @@ export enum Routes {
     Chats = '/chats',
     Profile = '/profile',
     EditPassword = '/settings-password',
-    ProfileEdit = '/edit',
+    ProfileEddit = '/edit',
     ErrorPage = '/error',
 }
-
 
 document.addEventListener("DOMContentLoaded", async () => {
 
@@ -25,7 +28,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         .use(Routes.Chats, Chats)
         .use(Routes.Login, Auth)
         .use(Routes.Register, Registration)
-        .use(Routes.Profile, ProfilePage)
+        .use(Routes.Profile, Profile)
+        .use(Routes.ProfileEddit, Eddit)
+        .use(Routes.ErrorPage, ErrorCode)
 
     let isProtectedRoute = true;
 

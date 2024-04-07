@@ -8,7 +8,12 @@ export class ChatsController {
   }
 
   static async getChats() {
-    const chats = await ChatsAPI.getChats(); 
-    Store.set('chats', chats); 
+    try {
+      const chats = await ChatsAPI.getChats(); 
+      Store.set('chats', chats); 
+    } catch (e) {
+      console.log(e);
+    }
   }
+
 }

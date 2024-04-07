@@ -47,11 +47,6 @@ export default class HTTPTransport {
                 const isGet = method === METHODS.GET;
 
                 xhr.open(method, url);
-
-                if(data) {
-                        xhr.setRequestHeader('Content-Type', 'application/json');
-                }
-
             
                 xhr.onreadystatechange = () => {
                         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -74,7 +69,10 @@ export default class HTTPTransport {
 
                 if (isGet || !data) {
                         xhr.send();
+                } else if(data instanceof FormData) {
+                        xhr.send(data);
                 } else {
+                        xhr.setRequestHeader('Content-Type', 'application/json');
                         xhr.send(JSON.stringify(data));
                 }
           });

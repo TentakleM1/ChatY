@@ -1,15 +1,24 @@
 import { Block } from "../../block";
 import store, { StoreEvents } from "../../store/Store";
+import isEqual from "../isEqual/isEqual";
 
   export const connect = <T extends Record<string, any>>(mapStateToProps:
     (data: any) => any) => {
     return (Component: typeof Block<T>) => {
         return class extends Component {
             constructor(props: any) {
-                super({ ...props, ...mapStateToProps(store.getState()) });
+                let state = mapStateToProps(store.getState());
+                super({ ...props, ...state });
+                console.log('connect', props, state)
                 store.on(StoreEvents.Updated, () => {
                     const newProps = mapStateToProps(store.getState());
-                    this.setProps(newProps);
+
+                    if(!isEqual(state, newProps)) {
+                        this.setProps(newProps);
+                    }
+                    
+                    state = newProps;
+
                 });
             }
         };

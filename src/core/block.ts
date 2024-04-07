@@ -41,7 +41,7 @@ export class Block<P extends Record<string, any> = any> {
     this.props = this._makePropsProxy(props);
 
     this.children = this._setChildren();
-
+  
     this.eventBus = () => eventBus;
 
     this._registerEvents(eventBus);
@@ -95,30 +95,44 @@ export class Block<P extends Record<string, any> = any> {
     this.componentDidMount();
   }
 
-  // Может переопределять пользователь, необязательно трогать
-  public componentDidMount(_OldProps: Object) {}
+  // Может переопределять пользователь, необязательно трогать componentdidmount а было moun
+  public componentDidMount() {}
 
-  public dispatchComponentDidMoun() {
+  public dispatchComponentDidMount() {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
 
     if(this.children) {
-      Object.values(this.children).forEach((child) => {
-        child.dispatchComponentDidMoun();
-      });
+      Object.values(this.children).forEach( child => {
+        if(child instanceof Block) {
+          child.dispatchComponentDidMount();
+        }
+      })
     }
-
   }
 
-  private _componentDidUpdate(oldProps: Object, newProps: Object) {
+  private _componentDidUpdate(oldProps: Object, newProps: Object): boolean {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (response) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+      
+      if(this.children) {
+        Object.values(this.children).forEach( child => {
+          if(child instanceof Block) {
+            child.setProps(newProps)
+          }
+        })
+      }
+      return true
     }
+
+    // Object.assign(oldProps, newProps);
+    // this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    // return true;
   } // с обновами для пропсов
 
   // Может переопределять пользователь, необязательно трогать
-  public componentDidUpdate(_oldProps: Object, _newProps: Object) {
-    return isEqual(_oldProps, _newProps);
+  public componentDidUpdate(_oldProps: Object, _newProps: Object): boolean {
+    return !isEqual(_oldProps, _newProps);
   }
 
   public setProps = (nextProps: Object) => {
@@ -134,6 +148,19 @@ export class Block<P extends Record<string, any> = any> {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
       this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     }
+
+    // if (!nextProps) {
+    //   return;
+    // }
+
+    // const oldProps = { ...this.props };
+    // Object.assign(this.props, nextProps);
+    // const shouldUpdate = this._componentDidUpdate(oldProps, nextProps);
+    // if (shouldUpdate) {
+    //   console.log("render")
+    //   this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
+    //   this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
+    // }
   };
 
   get element() {
@@ -153,7 +180,7 @@ export class Block<P extends Record<string, any> = any> {
     this._element.append(block);
 
     this._setEvents();
-    this.dispatchComponentDidMoun();
+    this.dispatchComponentDidMount();
   }
 
   private _removeEvents() {
@@ -226,7 +253,7 @@ export class Block<P extends Record<string, any> = any> {
 
       set(target, prop, value) {
         target[prop] = value;
-        self.eventBus().emit(Block.EVENTS.FLOW_CDM, { ...target }, target);
+        self.eventBus().emit(Block.EVENTS.FLOW_CDU, { ...target }, target);
         return true;
       },
 

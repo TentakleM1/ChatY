@@ -61,7 +61,7 @@ export default class Auth extends Block {
     super({
       children: {
         input,
-        button,
+        button: button,
       },
     });
   }

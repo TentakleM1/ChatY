@@ -25,7 +25,7 @@ export class Route {
 
     leave() {
         if (this._block) {
-            this._block.hide();
+            this._block = null;
         }
     }
 
@@ -39,6 +39,5 @@ export class Route {
             render(this._props?.rootQuery, this._block);
             return;
         }
-        this._block.show();
     }
 }

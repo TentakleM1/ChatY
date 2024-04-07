@@ -4,7 +4,8 @@ import { Block } from '../../core/block';
 import ProfileTypeInfo from '../../partials/profile-type-info/profile-type-info';
 import { AuthController } from '../../core/controllers/AuthController';
 import { connect } from '../../core/utils/connect/connect';
-import Store, { StoreEvents } from '../../core/store/Store';
+import { router } from '../../core/router/router';
+import { Routes } from '../../../main';
 
 
 async function onButtonExit() {
@@ -22,7 +23,7 @@ const buttonProfile = [
     selectorButton: 'editing',
     text: 'Изменить данные',
     events: {
-      click: () => window.location.href = '/profile/eddit',
+      click: () => router.go(Routes.ProfileEddit),
     },
   }),
 
@@ -44,7 +45,7 @@ const buttonProfile = [
   }),
 ];
 
-export default class Profile extends Block {
+class Profile extends Block {
   constructor(props: Record<string, string>) {
     super({
       styles: 'profile-page',
@@ -52,12 +53,9 @@ export default class Profile extends Block {
       children: {
         buttonProfile,
         profileInfo: Object.entries(props).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
-      },
+      },// dont down props!
     });
-
-    Store.on(StoreEvents.Updated, () => {
-      this.setProps(Store.getState());
-    })
+    console.log(props)
   }
 
   render(): DocumentFragment {
@@ -76,4 +74,4 @@ const mapStateToProps = (state: any) => {
   }
 }
  
-export const ProfilePage = connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(Profile);
