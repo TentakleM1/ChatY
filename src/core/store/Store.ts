@@ -10,7 +10,7 @@ class Store extends EventBus {
   
     public getState(): Record<string, unknown> {
       return this.state;
-    };
+    }; 
   
     public set(path: string, value: unknown) {
       try {

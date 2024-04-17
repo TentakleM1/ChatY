@@ -52,6 +52,10 @@ export class Block<P extends Record<string, any> = any> {
     return this.props.styles;
   }
 
+  private _setId(): string {
+    return this.props.id;
+  }
+
   private _setChildren(): Object {
     return this.props.children;
   }
@@ -80,9 +84,15 @@ export class Block<P extends Record<string, any> = any> {
   private _createResources() {
     const { tagName } = this._meta;
     this._element = this._createDocumentElement(tagName);
+
+    if (this._setId()) {
+      this._element.setAttribute('id',this._setId());
+    }
+
     if (this._setStyles()) {
       this._element.className = this._setStyles();
     }
+
   }
 
   public init() {
@@ -112,7 +122,7 @@ export class Block<P extends Record<string, any> = any> {
 
   private _componentDidUpdate(oldProps: Object, newProps: Object): boolean {
     const response = this.componentDidUpdate(oldProps, newProps);
-    if (response) {
+    if (true) {
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
       
       if(this.children) {
@@ -132,10 +142,13 @@ export class Block<P extends Record<string, any> = any> {
 
   // Может переопределять пользователь, необязательно трогать
   public componentDidUpdate(_oldProps: Object, _newProps: Object): boolean {
+    console.log(_oldProps, _newProps)
+    console.log(!isEqual(_oldProps, _newProps))
     return !isEqual(_oldProps, _newProps);
   }
 
   public setProps = (nextProps: Object) => {
+    console.log(nextProps)
     if (!nextProps) {
       return;
     }
@@ -143,24 +156,13 @@ export class Block<P extends Record<string, any> = any> {
     const oldProps = { ...this.props };
     Object.assign(this.props, nextProps);
 
-    const shouldUpdate = this.componentDidUpdate(oldProps, nextProps);
+    const shouldUpdate = this._componentDidUpdate(oldProps, nextProps);
+    console.log(shouldUpdate)
     if (shouldUpdate) {
+      console.log('work')
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
       this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     }
-
-    // if (!nextProps) {
-    //   return;
-    // }
-
-    // const oldProps = { ...this.props };
-    // Object.assign(this.props, nextProps);
-    // const shouldUpdate = this._componentDidUpdate(oldProps, nextProps);
-    // if (shouldUpdate) {
-    //   console.log("render")
-    //   this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
-    //   this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
-    // }
   };
 
   get element() {

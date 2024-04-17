@@ -11,9 +11,9 @@ export const template = `<main class="back-chat">
         <div class="profile">
             <div class="profile-photo-name">
                 <div class="profile-photo">
-                    <div class="change-photo">
+                    <div data-popup="avatar" class="change-photo">
                         <button class="change-photo-button">
-                            Поменять аватар
+                            
                         </button>
                     </div>
                     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,4 +32,5 @@ export const template = `<main class="back-chat">
                 {{{buttonProfile}}}
             </div>
         </div>
-    </main>`;
+    </main>
+    {{{popup}}}`;

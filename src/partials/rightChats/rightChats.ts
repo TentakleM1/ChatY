@@ -29,7 +29,7 @@ import MessageChat from '../message/messageChat.ts';
 // }
 
 export default class RightChats extends Block {
-  constructor(data: Record<string, any>, local: string) {
+  constructor() {
     super({
       styles: 'right-position-chat',
       children: {
@@ -39,7 +39,6 @@ export default class RightChats extends Block {
                       timeLeftOrRight: 'time-left',
                       time: '20',
                     }),
-        // chats(data, local),
         messageInputButton: new MessageInputButton({
           styles: 'messages-input-button',
           type: 'button',

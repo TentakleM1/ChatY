@@ -9,6 +9,7 @@ import { router } from './src/core/router/router';
 import { AuthController } from './src/core/controllers/AuthController';
 import Store, { StoreEvents } from './src/core/store/Store';
 import render from './src/core/utils/render/render';
+import { ChatsController } from './src/core/controllers/ChatsController';
 
 Store.on(StoreEvents.Updated, () => {console.log('work')})
 
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
         await AuthController.getUser();
+        await ChatsController.getChats();
         router.start();
         if (!isProtectedRoute) {
             router.go(Routes.Chats);

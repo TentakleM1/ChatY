@@ -8,12 +8,12 @@ import { ProfileController } from '../../core/controllers/ProfileController';
 import { AuthController } from '../../core/controllers/AuthController';
 
 async function onButton() {
-  const formData = {
+  const info = {
     data: getForm()
   };
 
-  if(formData.data) {
-    await ProfileController.changeUser(formData as unknown as Record<string, string>);
+  if(info.data) {
+    await ProfileController.changeUser(info as unknown as Record<string, string>);
   }
 }
 

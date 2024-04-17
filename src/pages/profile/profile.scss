@@ -55,7 +55,6 @@
                     height: 130px;
                     background: #efefef;
                     border-radius: 100%;
-                    cursor: pointer;
 
                     @include flexCenterPosition;
 
@@ -63,8 +62,8 @@
                         position: absolute;
                         width: 130px;
                         height: 130px;
-                        background: rgb(0 0 0 / 50%);
                         border-radius: 100%;
+                        cursor: pointer;
 
                         @include flexCenterPosition;
 
@@ -86,28 +85,9 @@
             .profile-editing {
                 .wrap-editing {
                     padding: 10px 0;
-                    border-bottom: 2px solid #eaeaea;
-
-                    .editing {
-                        padding: 0;
-                        color: $button-color;
-                        font-weight: 500;
-                        font-size: 16px;
-                        cursor: pointer;
-
-                        @include buttonNone;
-                    }
-
-                    .editing:hover {
-                        text-decoration: underline;
-                    }
 
                     .exit {
                         color: #f00;
-                    }
-
-                    .exit:hover {
-                        text-decoration: underline;
                     }
                 }
 
