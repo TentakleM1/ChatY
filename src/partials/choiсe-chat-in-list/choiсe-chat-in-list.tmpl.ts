@@ -1,4 +1,4 @@
-export const template = `<main class="chat-wrap" onclick="window.location.href='/{{url}}'">
+export const template = `<main class="chat-wrap" data-id="{{chatId}}">
             <div class="icon-chat">
                 <img class="icon" src="{{iconChat}}" alt="{{dontIconChat}}">
             </div>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 760px 250px 530px 560px 560px 210px;
+      height: 100vh;
+    }
+
+    .header {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 0 20px;
+    }
+
+    .logo {
+      width: 100px;
+      height: 100px;
+    }
+
+    .heading {
+      font-size: 3rem;
+      font-weight: bold;
+      line-height: 1.2;
+    }
+
+    .subheading {
+      font-size: 1.5rem;
+      font-weight: normal;
+      line-height: 1.5;
+      color: #666;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .button {
+      width: 263px;
+      height: 72px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      border: 1px solid #000;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .button:first-child {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .button:last-child {
+      background-color: transparent;
+      color: #000;
+    }
+
+    .banner {
+      background-color: #ff0000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: right;
+    }
+
+    .marquee {
+      width: 100%;
+      height: 60px;
+      overflow: hidden;
+      position: relative;
+      animation: marquee 15s linear infinite;
+    }
+
+    .marquee-content {
+      width: 200%;
+      display: flex;
+      animation: marquee-content 15s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    @keyframes marquee-content {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img class="logo" src="logo.png" alt="Logo">
+      <div>
+        <h1 class="heading">Headline</h1>
+        <p class="subheading">Subheading</p>
+        <div class="buttons">
+          <button class="button">Button 1</button>
+          <button class="button">Button 2</button>
+        </div>
+      </div>
+    </div>
+    <div class="banner">
+      <p>Call to action</p>
+    </div>
+    <div class="marquee">
+      <div class="marquee-content">
+        <p>Scrolling text</p>
+        <p>Scrolling text</p>
+        <p>Scrolling text</p>
+      </div>
+    </div>
+    <div class="container">
+        <!-- ... -->
+      
+        <div style="height: 250px; display: grid; grid-template-columns: 1fr 1fr;">
+          <div>
+            Чтобы поддержать Международный васюкинский турнир посетите лекцию на тему: «Плодотворная дебютная идея»
+          </div>
+          <div>
+            <!-- Овальная картинка справа -->
+          </div>
+        </div>
+      
+        <!-- ... -->
+      </div>
+      <div class="container" style="height: 530px; display: grid; grid-template-columns: 1fr 1fr;">
+        <div>
+            Сеанс одновременной игры в шахматы на 160 досках гроссмейстера О. Бендера
+      
+          <table>
+            <tr>
+              <th>Название клуба</th>
+              <th>Место проведения</th>
+            </tr>
+            <tr>
+              <td>Клуб 1</td>
+              <td>Место 1</td>
+            </tr>
+            <tr>
+              <td>Клуб 2</td>
+              <td>Место 2</td>
+            </tr>
+            <tr>
+              <td>Клуб 3</td>
+              <td>Место 3</td>
+            </tr>
+            <tr>
+              <td>Клуб 4</td>
+              <td>Место 4</td>
+            </tr>
+            <tr>
+              <td>Клуб 5</td>
+              <td>Место 5</td>
+            </tr>
+          </table>
+      
+          <p>По всем вопросам обращайтесь в администрацию</p>
+        </div>
+        <div>
+          <!-- Картинка -->
+        </div>
+      </div>
+    <div></div>
+  </div>
+</body>
+</html>

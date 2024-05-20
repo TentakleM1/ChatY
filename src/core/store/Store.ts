@@ -20,6 +20,19 @@ class Store extends EventBus {
         console.log(e);
       }
     };
+
+    public getUser() {
+      return this.getState().user ?? {};
+    }
+
+    public getMessageList(id: number) {
+      const messages = this.getMessages();
+      return messages[id];
+    }
+
+    public getMessages() {
+      return this.getState().messages ?? {};
+    }
   } 
 
-export default new Store()
+export default new Store();

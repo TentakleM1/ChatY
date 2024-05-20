@@ -5,7 +5,7 @@ export default function render(query: string, block: Block) {
 
   root.innerHTML = ''
 
-  root?.append(block.getContent());
+  root.append(block.getContent());
 
   return root;
 }

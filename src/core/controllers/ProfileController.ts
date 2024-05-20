@@ -28,4 +28,13 @@ export class ProfileController {
             console.log(e);
         }
     }
+
+    static async changeAvatar(data) {
+        try{
+            await ProfileApi.changeAvatar(data);
+            await AuthController.getUser();
+        } catch (e) {
+            console.log(e)
+        }
+    }
 } 

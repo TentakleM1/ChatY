@@ -14,9 +14,7 @@ import isEqual from "../isEqual/isEqual";
                 super({ ...props, ...state });
                 store.on(StoreEvents.Updated, () => {
                     const newProps = mapStateToProps(store.getState());
-                    console.log(newProps)
                     if(!isEqual(state, newProps)) {
-                        console.log(!isEqual(state, newProps))
                         this.setProps(newProps);
                     }
                     

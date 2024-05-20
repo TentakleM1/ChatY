@@ -7,6 +7,7 @@ import { connect } from '../../core/utils/connect/connect';
 import { router } from '../../core/router/router';
 import { Routes } from '../../../main';
 import PopUp, { showPopUp } from '../../partials/popup/popup';
+import { ProfileController } from '../../core/controllers/ProfileController';
 
 
 async function onButtonExit() {
@@ -15,6 +16,16 @@ async function onButtonExit() {
   } catch(e) {
     console.log(e);
   }
+}
+
+async function avatarOrPassword() {
+  const input = document.querySelector('input')
+  const file = input.files[0];
+  const formData = new FormData();
+  formData.append('file', file);
+    console.log(formData)
+    await ProfileController.changeAvatar(formData);
+
 }
 
 function editAvatar() {
@@ -32,6 +43,11 @@ function editAvatar() {
     } else {
       elementPopup.childNodes[1].innerHTML = '';
       elementPopup.style.background = '';
+    }
+
+    if(mouseEvent === 'click') {
+      showPopUp('popup')
+      return {id: 'avatar', capital: 'Поменять аватар', type: 'file', text: 'Изменить'}
     }
 
   }
@@ -53,7 +69,7 @@ const buttonProfile = [
     selectorWrap: 'wrap-editing',
     text: 'Изменить пароль',
     events: {
-      click: showPopUp
+      click: () => { showPopUp('popup') }
     }
   }),
 
@@ -76,12 +92,15 @@ class Profile extends Block {
       events: {
         mouseover: editAvatar,
         mouseout: editAvatar,
+        click: () => {
+          this.children.popup.setProps(editAvatar())
+        },
 
       },
       children: {
         buttonProfile,
         profileInfo: Object.entries(props).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
-        popup: new PopUp({capital: 'Поменять пароль', type: 'password', text: 'Изменить'})
+        popup: new PopUp({id: 'popup', capital: 'Поменять пароль', type: 'password', text: 'Изменить', click: avatarOrPassword})
       },
     });
   }
@@ -98,7 +117,7 @@ const mapStateToProps = (state: any) => {
     'Имя': state.user.first_name,
     'Фамилия': state.user.second_name,
     'Телефон': state.user.phone,
-
+    avatar: state.user.avatar
   }
 }
  

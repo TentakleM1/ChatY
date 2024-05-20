@@ -5,27 +5,27 @@ import { template } from "./popup.tmpl";
 
 
 export function showPopUp(type: string) {
-  const element = document.getElementById('popup');
+  const element = document.getElementById(type);
   
   element.style.cssText += 'top: 0;';
 
 }
 
-export function closePopup() {
+export function closePopup(type: string) {
     const element = event.target;
-    const popup = document.getElementById('popup');
+    const popup = document.getElementById(type);
 
     if(element.id == 'popup') {
       popup.style.cssText += 'top: -1000px;';
     } else if(element.type === 'button') {
-      popup.style.cssText += 'top: -1000px;';
+      // popup.style.cssText += 'top: -1000px;';
     }
   }
 
 export default class PopUp extends Block {
     constructor(props) {
       super({
-        id: 'popup',
+        id: props.id,
         capital: props.capital,
         styles: 'popup',
         children: {
@@ -46,7 +46,7 @@ export default class PopUp extends Block {
   
         },
         events: {
-          click: closePopup
+          click: () => { closePopup(props.id) }
         }
       })
     }

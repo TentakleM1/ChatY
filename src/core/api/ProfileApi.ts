@@ -13,6 +13,10 @@ class ProfileApi extends BaseAPI {
     public userChange(data: Record<string, string>): Promise<Record<string, string>> {
         return this.http.put('/profile', data);
     }
+
+    public changeAvatar(data: Record<string, string>) {
+        return this.http.put('/profile/avatar', data);
+    }
 }
 
 export default new ProfileApi();

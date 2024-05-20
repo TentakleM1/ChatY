@@ -5,8 +5,11 @@ import Input from '../input/input';
 import ChoiceChat from '../choiсe-chat-in-list/choice-chat-in-list';
 import { ChatsController } from '../../core/controllers/ChatsController';
 import { connect } from '../../core/utils/connect/connect';
-import PopUp, { closePopup, showPopUp } from '../popup/popup';
+import PopUp, { showPopUp } from '../popup/popup';
 import { getForm } from '../../core/utils/getForm/getForm';
+import isEqual from '../../core/utils/isEqual/isEqual';
+import Store from '../../core/store/Store';
+import messagesController  from '../../core/controllers/MessagesController';
 
 async function onButton() {
   const info = {
@@ -45,6 +48,13 @@ const button = [
   })
 ]
 
+async function message(id: string) {
+  const token = await ChatsController.getToken(id);
+  messagesController.connect(id, token)
+  const messageList = Store.getMessageList(id);
+  Store.set('message', messageList)
+}
+
  class LeftChats extends Block {
   constructor(props: Record<string, any>[]) {
     super({
@@ -60,11 +70,18 @@ const button = [
           selectorInput: 'search',
           selecrtorLable: 'search-lable',
         }),
-        chats: Object.entries(props).map((chat) => {
+        chats: props.chats.map((chat) => {
           return new ChoiceChat({
-            name: chat[1].title,
-            message: chat[1].last_message,
-            new: chat[1].unread_count
+            id: chat.id,
+            name: chat.title,
+            message: chat.last_message ? chat.last_message.content : 'no message',
+            new: chat.unread_count,
+            events: {
+              click: (e) => {
+                const chatId = e.currentTarget.id;
+                message(chatId);
+              }
+            }
           })
         })
       },
@@ -72,7 +89,23 @@ const button = [
   }
 
   public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {
-    
+
+    if(!isEqual(_oldProps, _newProps)) {
+      this.children.chats = _newProps.chats.map((chat) => {
+        return new ChoiceChat({
+          id: chat.id,
+          name: chat.title,
+          message: chat.last_message ? chat.last_message.content : 'no message',
+          new: chat.unread_count,
+          events: {
+            click: (e) => {
+              const chatId = e.currentTarget.id;
+              message(chatId);
+            }
+          }
+        })
+      })
+    }
   }
 
   render() {
@@ -81,7 +114,9 @@ const button = [
 }
 
 const mapStateToProps = (state: any) => {
-  return state.chats;
+  return {
+    chats: state.chats || []
+  };
 }
 
 export default connect(mapStateToProps)(LeftChats);

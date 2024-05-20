@@ -142,13 +142,10 @@ export class Block<P extends Record<string, any> = any> {
 
   // Может переопределять пользователь, необязательно трогать
   public componentDidUpdate(_oldProps: Object, _newProps: Object): boolean {
-    console.log(_oldProps, _newProps)
-    console.log(!isEqual(_oldProps, _newProps))
     return !isEqual(_oldProps, _newProps);
   }
 
   public setProps = (nextProps: Object) => {
-    console.log(nextProps)
     if (!nextProps) {
       return;
     }
@@ -157,9 +154,7 @@ export class Block<P extends Record<string, any> = any> {
     Object.assign(this.props, nextProps);
 
     const shouldUpdate = this._componentDidUpdate(oldProps, nextProps);
-    console.log(shouldUpdate)
     if (shouldUpdate) {
-      console.log('work')
       this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
       this.eventBus().emit(Block.EVENTS.FLOW_CDU, oldProps, nextProps);
     }

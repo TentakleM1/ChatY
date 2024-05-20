@@ -16,6 +16,13 @@ class ChatsAPI extends BaseAPI {
     public createChat(data: IChat) {
         return this.http.post('/', data);
     }
+
+    async getToken(id: number): Promise<string> {
+        const response = await this.http.post(`/token/${id}`);
+
+        return response.token;
+    }
+    
 }
 
 export default new ChatsAPI();

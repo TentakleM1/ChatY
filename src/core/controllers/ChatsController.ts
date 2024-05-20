@@ -3,10 +3,6 @@ import Store from "../store/Store";
 
 export class ChatsController {
 
-  static async create() {
-
-  }
-
   static async getChats() {
     try {
       const chats = await ChatsAPI.getChats(); 
@@ -23,6 +19,10 @@ export class ChatsController {
     } catch (e) {
       console.log(e)
     }
+  }
+
+  static async getToken(id: number) {
+    return ChatsAPI.getToken(id);
   }
 
 }

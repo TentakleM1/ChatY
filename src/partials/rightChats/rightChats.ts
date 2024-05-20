@@ -2,43 +2,14 @@ import { Block } from '../../core/block.ts';
 import { template } from './rightChats.tmpl.ts';
 import MessageInputButton from '../messages-input-button/messages-input-button.ts';
 import MessageChat from '../message/messageChat.ts';
+import { connect } from '../../core/utils/connect/connect.js';
+import isEqual from '../../core/utils/isEqual/isEqual.js';
 
-// function chats(data: Record<string, any>, local: string): MessageChat[] {
-//   const messageChats: MessageChat[] = [];
-
-//   data.forEach((chat: Record<string, any>) => {
-//     if (chat.profile_name === local.split('/').join('')) {
-//       chat.messages.forEach((item: Record<string, any>) => {
-//         if (item.author === 'you') {
-//           messageChats.push(new MessageChat({
-//             right: 'right', messageLeftOrRight: 'message-right', text: item.message, timeLeftOrRight: 'time-right', time: item.date,
-//           }));
-//         } else {
-//           messageChats.push(new MessageChat({
-//             messageLeftOrRight: 'message-left',
-//             text: item.message,
-//             timeLeftOrRight: 'time-left',
-//             time: item.date,
-//           }));
-//         }
-//       });
-//     }
-//   });
-
-//   return messageChats;
-// }
-
-export default class RightChats extends Block {
-  constructor() {
+class RightChats extends Block {
+  constructor(props: Record<string, any>[]) {
     super({
       styles: 'right-position-chat',
       children: {
-        messageChats: new MessageChat({
-                      messageLeftOrRight: 'message-left',
-                      text: 'hi',
-                      timeLeftOrRight: 'time-left',
-                      time: '20',
-                    }),
         messageInputButton: new MessageInputButton({
           styles: 'messages-input-button',
           type: 'button',
@@ -57,7 +28,44 @@ export default class RightChats extends Block {
     });
   }
 
+  public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {
+    
+    if(!isEqual(_oldProps, _newProps)) {
+      this.children.messageChats = _newProps.message.map( (message) => {
+        const date = new Date(message.time);
+        if(_newProps.userId === message.user_id) {
+          return new MessageChat({
+            messageLeftOrRight: 'message-right',
+            text: message.content,
+            timeLeftOrRight: 'time-right',
+            time: `${date.getHours()}:${date.getMinutes()}`,
+            right: 'right',
+          })
+        } else {
+          return new MessageChat({
+            messageLeftOrRight: 'message-left',
+            text: message.content,
+            timeLeftOrRight: 'time-left',
+            time: '20',
+          })
+        }
+        
+
+      })
+    }
+  }
+
   render(): DocumentFragment {
     return this.compile(template, this.props);
   }
 }
+
+const mapStateToProps = (state: any) => {
+  console.log(state)
+  return {
+    userId: state.user.id, 
+    message: state.message || []
+  }
+}
+
+export default connect(mapStateToProps)(RightChats);
