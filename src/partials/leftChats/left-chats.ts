@@ -50,9 +50,13 @@ const button = [
 
 async function message(id: string) {
   const token = await ChatsController.getToken(id);
-  messagesController.connect(id, token)
-  const messageList = Store.getMessageList(id);
-  Store.set('message', messageList)
+  await messagesController.connect(id, token)
+  let messageList;
+  setTimeout(() => {
+    messageList = Store.getMessageList(id);
+    Store.set('message', messageList)
+    Store.set('chatId', id)
+  }, 500)
 }
 
  class LeftChats extends Block {
@@ -86,6 +90,7 @@ async function message(id: string) {
         })
       },
     });
+    
   }
 
   public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {

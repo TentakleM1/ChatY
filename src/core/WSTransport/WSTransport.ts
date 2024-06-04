@@ -65,7 +65,6 @@ export default class WSTransport extends EventBus {
       if(data instanceof SyntaxError) {
         alert("Couldn't send message");
       }
-
       if(data.type && data.type === 'pong') return;
 
       this.emit(WSTransportEvents.Message, data);

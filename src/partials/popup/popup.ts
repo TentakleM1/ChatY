@@ -30,6 +30,7 @@ export default class PopUp extends Block {
         styles: 'popup',
         children: {
           input: new Input({
+            name: 'popup',
             type: props.type,
             idForLable: props.idForLable,
             selectorInput: 'search',

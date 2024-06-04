@@ -33,6 +33,11 @@ class Store extends EventBus {
     public getMessages() {
       return this.getState().messages ?? {};
     }
+
+    public getMessage() {
+      return this.getState().message ?? {};
+    }
+
   } 
 
 export default new Store();

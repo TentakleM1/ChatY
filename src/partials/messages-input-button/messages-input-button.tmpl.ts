@@ -11,7 +11,7 @@ export const template = `<div class="paper-clip">
 
     </div>
     <div class="input-message-wrap">
-        <input class="input-message" type="text" name="message" placeholder="Сообщение">
+        <input id="message" class="input-message" type="text" name="message" placeholder="Сообщение">
     </div>
     <div class="button-message-wrap">
         <button class="button-message" id="send" type="{{type}}">

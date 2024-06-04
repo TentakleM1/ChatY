@@ -4,6 +4,27 @@ import MessageInputButton from '../messages-input-button/messages-input-button.t
 import MessageChat from '../message/messageChat.ts';
 import { connect } from '../../core/utils/connect/connect.js';
 import isEqual from '../../core/utils/isEqual/isEqual.js';
+import messagesController from '../../core/controllers/MessagesController.js';
+import Store from '../../core/store/Store.js';
+import { ChatsController } from '../../core/controllers/ChatsController.js';
+
+async function sendMessage(chatId, target, input) {
+  if(target.id === 'send') {
+    if(input.value !== '') {
+      const message = input.value
+      await messagesController.sendMessage(chatId, message)
+      let messageList;
+      setTimeout(() => {
+        messageList =  Store.getMessageList(chatId);
+        Store.set('message', messageList);
+        ChatsController.getChats();
+
+      }, 500)
+      input.value = '';
+    }
+    return
+  }
+}
 
 class RightChats extends Block {
   constructor(props: Record<string, any>[]) {
@@ -14,15 +35,13 @@ class RightChats extends Block {
           styles: 'messages-input-button',
           type: 'button',
           events: {
-            click: (e: any) => {
+            click: (e) => {
               const { target } = e;
-              if (target.id === 'send') {
-                if (document.querySelectorAll('input')[1].value) {
-                  console.log({ message: document.querySelectorAll('input')[1].value });
-                }
-              }
-            },
-          },
+              const input = document.getElementById('message');
+              const chatId = this.props.chatId;
+              sendMessage(chatId, target, input);
+            }
+          }
         }),
       },
     });
@@ -61,10 +80,10 @@ class RightChats extends Block {
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state)
   return {
     userId: state.user.id, 
-    message: state.message || []
+    chatId: state.chatId,
+    message: state.message || [],
   }
 }
 

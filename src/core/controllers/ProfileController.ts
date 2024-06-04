@@ -29,9 +29,12 @@ export class ProfileController {
         }
     }
 
-    static async changeAvatar(data) {
+    static async changeAvatar(file) {
         try{
-            await ProfileApi.changeAvatar(data);
+            const data = new FormData();
+            data.append('avatar', file)
+
+            await ProfileApi.changeAvatar({data});
             await AuthController.getUser();
         } catch (e) {
             console.log(e)

@@ -19,12 +19,11 @@ async function onButtonExit() {
 }
 
 async function avatarOrPassword() {
-  const input = document.querySelector('input')
-  const file = input.files[0];
-  const formData = new FormData();
-  formData.append('file', file);
-    console.log(formData)
-    await ProfileController.changeAvatar(formData);
+  const input = document.querySelector('input');
+
+  const file = input.files[0]
+
+  await ProfileController.changeAvatar(file);
 
 }
 
@@ -87,6 +86,7 @@ const buttonProfile = [
 class Profile extends Block {
   constructor(props: Record<string, string>) {
     super({
+      avatar: props.avatar,
       styles: 'profile-page',
       login: props['Логин'],
       events: {
@@ -99,12 +99,12 @@ class Profile extends Block {
       },
       children: {
         buttonProfile,
-        profileInfo: Object.entries(props).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
+        profileInfo: Object.entries(props.user).map((info: [string, string]): Block => new ProfileTypeInfo({ type: info[0], info: info[1] })),
         popup: new PopUp({id: 'popup', capital: 'Поменять пароль', type: 'password', text: 'Изменить', click: avatarOrPassword})
       },
     });
-  }
 
+  }
   render(): DocumentFragment {
     return this.compile(template, this.props);
   }
@@ -112,11 +112,13 @@ class Profile extends Block {
 
 const mapStateToProps = (state: any) => {
   return {
-    'Логин': state.user.login,
-    'Почта': state.user.email,
-    'Имя': state.user.first_name,
-    'Фамилия': state.user.second_name,
-    'Телефон': state.user.phone,
+    user: {
+      'Логин': state.user.login,
+      'Почта': state.user.email,
+      'Имя': state.user.first_name,
+      'Фамилия': state.user.second_name,
+      'Телефон': state.user.phone,
+    },
     avatar: state.user.avatar
   }
 }
