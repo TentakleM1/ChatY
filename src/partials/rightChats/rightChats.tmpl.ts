@@ -22,14 +22,14 @@ export const template = `<header class="header-messages-chat">
         {{{plug}}}
     </main>
     {{{messageInputButton}}}
-    <div id="popupChat" class="popupChat">
-        <div class="wrap_popup">
-            <div class="wrap_close">
+    <div id="popupChat" class="popup-chat">
+        <div class="wrap-popup">
+            <div class="wrap-close">
                 <button id="close" class="close">
                 </button>
             </div>
             <h3 id="popup_capital">Добавить пользвотеля</h3>
-            <input id="popup_input" class="popup_input" type="text" />
-            <button id="popup_button" class="popup_button" >Добавить</button>
+            <input id="popup_input" class="popup-input" type="text" />
+            <button id="popup_button" class="popup-button" >Добавить</button>
         </div>
     <div>`;
