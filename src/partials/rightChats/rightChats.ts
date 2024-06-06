@@ -88,7 +88,6 @@ class RightChats extends Block {
         plug: new Plug()
       },
     });
-    console.log(props);
   }
 
   public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {
@@ -148,7 +147,6 @@ class RightChats extends Block {
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state)
   return {
     userId: state.user.id, 
     chatId: state.chatId,
