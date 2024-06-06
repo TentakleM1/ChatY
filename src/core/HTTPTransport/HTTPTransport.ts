@@ -27,7 +27,6 @@ export default class HTTPTransport {
     };
 
     public put = (url: string, options: Options = {}) => {
-        console.log(options)
             return this.request(`${this.point}${url}`, {...options, method: METHODS.PUT}, options.timeout);
     };
 

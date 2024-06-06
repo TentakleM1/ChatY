@@ -27,22 +27,20 @@ async function avatarOrPassword() {
 
 }
 
-function editAvatar() {
+function editPopup() {
   const element = event?.target;
+  const elementId = element.id
+
   let mouseEvent;
   const elementSelector = 'data-popup';
+
+  if(elementId === 'changePassword button') {
+    showPopUp('popup')
+    return {id: 'popup', capital: 'Поменять пароль', type: 'password', text: 'Изменить'}
+  }
   //исправить баг
   if(element.hasAttribute(elementSelector)) {
-    const elementPopup = document.querySelector(`[${elementSelector}]`)
     mouseEvent = event.type;
-
-    if(mouseEvent === 'mouseover') {
-      elementPopup.style.background = '#0f0f0f56';
-      elementPopup.childNodes[1].append('Поменять аватар');
-    } else {
-      elementPopup.childNodes[1].innerHTML = '';
-      elementPopup.style.background = '';
-    }
 
     if(mouseEvent === 'click') {
       showPopUp('popup')
@@ -64,12 +62,10 @@ const buttonProfile = [
   }),
 
   new Button({
+    id: 'changePassword',
     name: 'buttonProfile',
     selectorWrap: 'wrap-editing',
     text: 'Изменить пароль',
-    events: {
-      click: () => { showPopUp('popup') }
-    }
   }),
 
   new Button({
@@ -90,10 +86,8 @@ class Profile extends Block {
       styles: 'profile-page',
       login: props['Логин'],
       events: {
-        mouseover: editAvatar,
-        mouseout: editAvatar,
         click: () => {
-          this.children.popup.setProps(editAvatar())
+          this.children.popup.setProps(editPopup())
         },
 
       },

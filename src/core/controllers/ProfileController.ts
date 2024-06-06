@@ -40,4 +40,22 @@ export class ProfileController {
             console.log(e)
         }
     }
+
+    static async searchUser(data) {
+        try {
+
+            const info = {
+                data: {
+                    login: data
+                }
+            };
+
+            const user = await ProfileApi.searchUser(info);
+            
+            return user;
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
 } 

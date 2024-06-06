@@ -15,8 +15,11 @@ class ProfileApi extends BaseAPI {
     }
 
     public changeAvatar(data) {
-        console.log(data)
         return this.http.put('/profile/avatar', data);
+    }
+
+    public searchUser(data) {
+        return this.http.post('/search', data);
     }
 }
 

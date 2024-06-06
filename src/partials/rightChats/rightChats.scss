@@ -6,7 +6,7 @@
     .header-messages-chat {
         display: flex;
         flex: 1 1 5%;
-        justify-content: space-between;
+        justify-content: space-around;
         margin: 0 15px;
         border-bottom: 2px solid $border-chat;
 
@@ -31,24 +31,13 @@
 
             .setting-chat {
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                justify-content: center;
-                width: 30px;
+                justify-content: space-between;
+                width: 100px;
                 height: 30px;
-                cursor: pointer;
 
-                .dot {
-                    width: 4px;
-                    height: 4px;
-                    margin-bottom: 3px;
-                    background: $black;
-                    border-radius: 100%;
-                }
-
-                .dot:last-child {
-                    margin: 0;
-                }
+                
             }
         }
     }
@@ -57,7 +46,60 @@
         display: flex;
         flex: 1 1 82%;
         flex-direction: column;
-        justify-content: end;
         overflow: auto;
+
+    }
+
+    .popupChat {
+        width: 50%;
+        height: 98%;
+        z-index: 1000;
+        position: absolute;
+        top: -1000px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    
+        .wrap_popup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 340px;
+            padding: 1rem;
+            background: $white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px $input-underline;
+
+            .popup_input {
+                display: block;
+                padding: 5px;
+                margin-bottom: 1rem;
+                font-size: $middle-font-size;
+                @include inputNone;
+                background: $none-icon-chat;
+                border-radius: $border-radius;
+            }
+
+            .wrap_close {
+                width: 100%;
+                display: flex;
+                justify-content: end;
+
+                .close {
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 100%;
+                    width: 25px;
+                    height: 25px;
+                    background: #FF0000;
+                    
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+    
+        }
+    
     }
 }

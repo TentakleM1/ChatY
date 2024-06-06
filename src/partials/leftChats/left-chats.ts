@@ -31,7 +31,9 @@ const button = [
     type: 'button',
     selectorButton: 'button-profile',
     events: {
-      click: showPopUp,
+      click: () => {
+        showPopUp('popup');
+      },
     },
 
   }),
@@ -52,10 +54,18 @@ async function message(id: string) {
   const token = await ChatsController.getToken(id);
   await messagesController.connect(id, token)
   let messageList;
+
+  const chatTitle = Store.getState().chats.filter(chat => {
+    if(chat.id === Number(id)) {
+      return chat
+    }
+  })[0].title;
+
   setTimeout(() => {
     messageList = Store.getMessageList(id);
     Store.set('message', messageList)
     Store.set('chatId', id)
+    Store.set('chatTitle', chatTitle)
   }, 500)
 }
 
@@ -64,7 +74,7 @@ async function message(id: string) {
     super({
       styles: 'left-position-chats',
       children: {
-        popup: new PopUp({capital: 'Новый чат', type: 'text', text: 'Создать', click: onButton, idForLable: 'popup-text'}),
+        popup: new PopUp({ id: 'popup', capital: 'Новый чат', type: 'text', text: 'Создать', click: onButton, idForLable: 'popup-text'}),
         button,
         input: new Input({
           name: 'search',

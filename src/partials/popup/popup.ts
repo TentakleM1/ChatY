@@ -14,11 +14,10 @@ export function showPopUp(type: string) {
 export function closePopup(type: string) {
     const element = event.target;
     const popup = document.getElementById(type);
-
-    if(element.id == 'popup') {
+    if(element.id == type) {
       popup.style.cssText += 'top: -1000px;';
     } else if(element.type === 'button') {
-      // popup.style.cssText += 'top: -1000px;';
+      popup.style.cssText += 'top: -1000px;';
     }
   }
 
@@ -47,7 +46,7 @@ export default class PopUp extends Block {
   
         },
         events: {
-          click: () => { closePopup(props.id) }
+          click: () => { closePopup(props.id); }
         }
       })
     }

@@ -22,6 +22,18 @@ class ChatsAPI extends BaseAPI {
 
         return response.token;
     }
+
+    async deleteChat(data) {
+        return this.http.delete('/', data);
+    }
+
+    async addUserToChat(data) {
+        return this.http.put('/users', data);
+    }
+
+    async deleteUserInChat(data) {
+        return this.http.delete('/users', data);
+    }
     
 }
 
