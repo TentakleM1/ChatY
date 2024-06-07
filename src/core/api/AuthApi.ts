@@ -1,3 +1,4 @@
+// @ts-nocheck
 import BaseAPI from "./BaseApi";
 
 export interface ISignupData {

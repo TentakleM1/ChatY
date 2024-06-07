@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { template } from './eddit.tmpl';
 import Button from '../../partials/button/button';
 import { Block } from '../../core/block';

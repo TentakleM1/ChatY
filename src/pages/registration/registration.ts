@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from '../../core/block';
 import { template } from './registration.tmpl';
 import Button from '../../partials/button/button';

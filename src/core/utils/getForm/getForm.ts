@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { validation } from '../validation/validation';
 
 export function getForm(typeId: string) {

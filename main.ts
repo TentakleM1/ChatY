@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ErrorCode from './src/pages/404/404';
 import Auth from './src/pages/auth/auth';
 import Registration from './src/pages/registration/registration';

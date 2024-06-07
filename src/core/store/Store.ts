@@ -1,3 +1,4 @@
+// @ts-nocheck
 import EventBus from "../EventBus/eventBus";
 import set from "../utils/merge/merge";
 

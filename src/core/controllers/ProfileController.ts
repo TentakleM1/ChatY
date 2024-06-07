@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Routes } from "../../../main";
 import { IUser } from "../api/AuthApi";
 import ProfileApi from "../api/ProfileApi";

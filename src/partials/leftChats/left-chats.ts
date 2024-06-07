@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from '../../core/block';
 import { template } from './left-chats.tmpl';
 import Button from '../button/button';

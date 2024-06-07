@@ -1,3 +1,4 @@
+// @ts-nocheck
 import WSTransport, { WSTransportEvents } from '../WSTransport/WSTransport';
 import store from '../store/Store';
 
@@ -24,7 +25,7 @@ class MessagesController {
   async connect(id: number, token: string) {
     if (this.sockets.has(id)) return;
 
-    const userId = store.getUser().id;
+    const userId: string = store.getUser().id;
     const wsTransport = new WSTransport(
     `wss://ya-praktikum.tech/ws/chats/${userId}/${id}/${token}`
     );

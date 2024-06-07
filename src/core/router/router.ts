@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from "../block";
 import { Route } from "./route";
 

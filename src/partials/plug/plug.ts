@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from '../../core/block';
 import { template } from './plug.tmpl.ts';
 

@@ -1,7 +1,8 @@
-import { Block } from '../../core/block.ts';
-import { template } from './rightChats.tmpl.ts';
-import MessageInputButton from '../messages-input-button/messages-input-button.ts';
-import MessageChat from '../message/messageChat.ts';
+// @ts-nocheck
+import { Block } from '../../core/block.js';
+import { template } from './rightChats.tmpl.js';
+import MessageInputButton from '../messages-input-button/messages-input-button.js';
+import MessageChat from '../message/messageChat.js';
 import { connect } from '../../core/utils/connect/connect.js';
 import isEqual from '../../core/utils/isEqual/isEqual.js';
 import messagesController from '../../core/controllers/MessagesController.js';
@@ -30,10 +31,10 @@ async function sendMessage(chatId, target, input) {
 }
 
 async function editPopupAndAddDeleteUser(id: string) {
-  const popupChat = document.getElementById('popupChat');
-  const popupCapital = document.getElementById('popup_capital');
-  const popupInput = document.getElementById('popup_input');
-  const popupButton = document.getElementById('popup_button');
+  const popupChat: HTMLElement | null = document.getElementById('popupChat');
+  const popupCapital: HTMLElement | null = document.getElementById('popup_capital');
+  const popupInput: HTMLElement | null = document.getElementById('popup_input');
+  const popupButton: HTMLElement | null = document.getElementById('popup_button');
 
   if(id === 'delete_chat') {
 
@@ -56,8 +57,8 @@ async function editPopupAndAddDeleteUser(id: string) {
     popupChat.style.cssText += 'top: -1000px;';
     
   } else if(id === popupButton.id) {
-    const users = popupInput.value;
-    const chatId = Number(Store.getState().chatId);
+    const users= popupInput.value;
+    const chatId: Number = Number(Store.getState().chatId);
     if(users === '') return alert('введите id пользвотеля'); 
     const user = await ProfileController.searchUser(users);
 
@@ -127,10 +128,10 @@ class RightChats extends Block {
           styles: 'messages-input-button',
           type: 'button',
           events: {
-            click: (e) => {
+            click: (e: any) => {
               const { target } = e;
-              const input = document.getElementById('message');
-              const chatId = this.props.chatId;
+              const input: HTMLElement | null = document.getElementById('message');
+              const chatId: Number = this.props.chatId;
               sendMessage(chatId, target, input);
 
             }

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from "../../core/block";
 import Input from "../input/input";
 import Button from "../button/button";

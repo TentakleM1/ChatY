@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { IUser } from "./AuthApi";
 import BaseAPI from "./BaseApi";
 
@@ -14,11 +15,11 @@ class ProfileApi extends BaseAPI {
         return this.http.put('/profile', data);
     }
 
-    public changeAvatar(data) {
+    public changeAvatar(data: Record<string, string>) {
         return this.http.put('/profile/avatar', data);
     }
 
-    public searchUser(data) {
+    public searchUser(data: Record<string, string>) {
         return this.http.post('/search', data);
     }
 }

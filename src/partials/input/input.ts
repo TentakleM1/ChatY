@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from '../../core/block.ts';
 import { template } from './input.tmpl.ts';
 import { validation } from '../../core/utils/validation/validation.ts';

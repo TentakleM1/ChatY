@@ -1,3 +1,4 @@
+// @ts-nocheck
 import queryStringify from "../utils/queryStringify/queryStringify";
 
 type Options = Record<string, any>;

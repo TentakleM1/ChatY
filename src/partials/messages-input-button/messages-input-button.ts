@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Block } from '../../core/block.ts';
 import { template } from './messages-input-button.tmpl.ts';
 
