@@ -104,11 +104,9 @@ async function message(id: string) {
 
       },
     });
-    console.log(props)
   }
 
   public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {
-    console.log('work')
     if(!isEqual(_oldProps, _newProps)) {
       this.children.chats = _newProps.chats.map((chat) => {
         return new ChoiceChat({
@@ -133,7 +131,6 @@ async function message(id: string) {
 }
 
 const mapStateToProps = (state: any) => {
-  console.log(state)
   return {
     chats: state.chats || []
   };

@@ -48,7 +48,6 @@ export class ChatsController {
         }
       }
       await ChatsAPI.addUserToChat(info);
-
     } catch(e) {
       console.log(e);
     }
