@@ -1,5 +1,5 @@
-import { Block } from "../../block.ts";
-import store, { StoreEvents } from "../../store/Store.ts";
+import { Block } from "../../block";
+import store, { StoreEvents } from "../../store/Store";
 import isEqual from "../isEqual/isEqual";
 
   export const connect = <T extends Record<string, any>>(mapStateToProps: (data: any) => any) => {
