@@ -75,16 +75,7 @@ async function message(id: string) {
     super({
       styles: 'left-position-chats',
       children: {
-        popup: new PopUp({ id: 'popup', capital: 'Новый чат', type: 'text', text: 'Создать', click: onButton, idForLable: 'popup-text'}),
-        button,
-        input: new Input({
-          name: 'search',
-          type: 'text',
-          placeholder: 'Поиск',
-          idForLable: 'search',
-          selectorInput: 'search',
-          selecrtorLable: 'search-lable',
-        }),
+
         chats: props.chats.map((chat) => {
           return new ChoiceChat({
             id: chat.id,
@@ -98,14 +89,26 @@ async function message(id: string) {
               }
             }
           })
-        })
+        }),
+        
+        popup: new PopUp({ id: 'popup', capital: 'Новый чат', type: 'text', text: 'Создать', click: onButton, idForLable: 'popup-text'}),
+        button,
+        input: new Input({
+          name: 'search',
+          type: 'text',
+          placeholder: 'Поиск',
+          idForLable: 'search',
+          selectorInput: 'search',
+          selecrtorLable: 'search-lable',
+        }),
+
       },
     });
-    
+    console.log(props)
   }
 
   public componentDidUpdate(_oldProps: { [x: string]: any; }, _newProps: { [x: string]: any; }): boolean {
-
+    console.log('work')
     if(!isEqual(_oldProps, _newProps)) {
       this.children.chats = _newProps.chats.map((chat) => {
         return new ChoiceChat({
@@ -130,6 +133,7 @@ async function message(id: string) {
 }
 
 const mapStateToProps = (state: any) => {
+  console.log(state)
   return {
     chats: state.chats || []
   };
