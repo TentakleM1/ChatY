@@ -1,0 +1,113 @@
+.right-position-chat {
+    display: flex;
+    flex: 1 1 75%;
+    flex-direction: column;
+
+    .header-messages-chat {
+        display: flex;
+        flex: 1 1 5%;
+        justify-content: space-around;
+        margin: 0 15px;
+        border-bottom: 2px solid $border-chat;
+
+        .header-profile-messages-chat {
+            display: flex;
+            align-items: center;
+
+            .icon-profile {
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+                background: $none-icon-chat;
+                border-radius: 100%;
+                overflow: hidden;
+
+                .chat-avatar {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 100%;
+                }
+            }
+        }
+
+        .header-setting-chat {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+
+            .setting-chat {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                width: 100px;
+                height: 30px;
+
+                
+            }
+        }
+    }
+
+    .messages {
+        display: flex;
+        flex: 1 1 82%;
+        flex-direction: column;
+        overflow: auto;
+
+    }
+
+    .popup-chat {
+        width: 50%;
+        height: 98%;
+        z-index: 1000;
+        position: absolute;
+        top: -1000px;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+    
+        .wrap-popup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 340px;
+            padding: 1rem;
+            background: $white;
+            border-radius: 10px;
+            box-shadow: 0 0 5px $input-underline;
+
+            .popup-input {
+                display: block;
+                padding: 5px;
+                margin-bottom: 1rem;
+                font-size: $middle-font-size;
+
+                @include inputNone;
+
+                background: $none-icon-chat;
+                border-radius: $border-radius;
+            }
+
+            .wrap-close {
+                width: 100%;
+                display: flex;
+                justify-content: end;
+
+                .close {
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 100%;
+                    width: 25px;
+                    height: 25px;
+                    background: #F00;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+    
+        }
+    
+    }
+}
