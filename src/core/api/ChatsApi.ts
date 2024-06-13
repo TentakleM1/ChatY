@@ -35,6 +35,10 @@ class ChatsAPI extends BaseAPI {
     async deleteUserInChat(data) {
         return this.http.delete('/users', data);
     }
+
+    async uploadChatAvatar(data:  Record<string, string>) {
+        return this.http.put('/avatar', data);
+    }
     
 }
 

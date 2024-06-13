@@ -1,7 +1,7 @@
 export const template = `<header class="header-messages-chat">
         <div class="header-profile-messages-chat">
-            <div class="icon-profile">
-
+            <div id="iconChat" class="icon-profile">
+                <img id="iconChat" class="chat-avatar" src="https://ya-praktikum.tech/api/v2/resources/{{avatar}}" />
             </div>
             <div class="name-message">
                 <h3>

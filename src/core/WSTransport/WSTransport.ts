@@ -62,7 +62,13 @@ export default class WSTransport extends EventBus {
     socket.addEventListener('error', (e) => this.emit(WSTransportEvents.Error, e));
     
     socket.addEventListener('message', (message) => {
-      const data = JSON.parse(message.data);
+      let data
+      try{
+        data = JSON.parse(message.data);
+      } catch (e) {
+        console.log(e)
+      };
+
       if(data instanceof SyntaxError) {
         alert("Couldn't send message");
       }

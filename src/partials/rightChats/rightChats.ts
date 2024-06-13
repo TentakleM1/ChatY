@@ -36,6 +36,8 @@ async function editPopupAndAddDeleteUser(id: string) {
   const popupInput: HTMLElement | null = document.getElementById('popup_input');
   const popupButton: HTMLElement | null = document.getElementById('popup_button');
 
+  const chatId: Number = Number(Store.getState().chatId);
+
   if(id === 'delete_chat') {
 
     await ChatsController.deleteChat();
@@ -45,6 +47,7 @@ async function editPopupAndAddDeleteUser(id: string) {
     popupChat.style.cssText += 'top: 0;';
     popupCapital.innerHTML = 'Добавить пользвотеля';
     popupButton.innerHTML = 'добавить';
+    popupInput.type = 'text';
 
   } else if(id === 'delete_user') {
 
@@ -52,26 +55,50 @@ async function editPopupAndAddDeleteUser(id: string) {
     popupCapital.innerHTML = 'Убрать пользвотеля';
     popupButton.innerHTML = 'убрать';
 
-  } else if(id === "close") {
+    popupInput.type = 'text';
+
+  } else if(id === 'close') {
 
     popupChat.style.cssText += 'top: -1000px;';
     
   } else if(id === popupButton.id) {
     const users= popupInput.value;
-    const chatId: Number = Number(Store.getState().chatId);
-    if(users === '') return alert('введите id пользвотеля'); 
     const user = await ProfileController.searchUser(users);
+    const whatPopup = popupCapital?.textContent;
 
-    if(popupCapital.textContent === 'Добавить пользвотеля') {   
-      ChatsController.addUserToChat(chatId, user[0].id);
-      popupChat.style.cssText += 'top: -1000px;';
-      popupInput.value = '';
-    } 
+    switch (whatPopup) {
+      case 'Добавить пользвотеля':
+        if(users === '') return alert('введите id пользвотеля'); 
+        ChatsController.addUserToChat(chatId, user[0].id);
+        popupChat.style.cssText += 'top: -1000px;';
+        popupInput.value = '';
+        break;
 
-    ChatsController.deleteUserInChat(chatId, user[0].id);
-    popupChat.style.cssText += 'top: -1000px;';
-    popupInput.value = '';
+      case 'Картинка чата':
 
+        const file = popupInput.files[0];
+
+        ChatsController.uploadChatAvatar(chatId, file);
+        popupChat.style.cssText += 'top: -1000px;';
+        popupInput.value = '';
+        break;
+
+      default:
+        ChatsController.deleteUserInChat(chatId, user[0].id);
+        
+        popupChat.style.cssText += 'top: -1000px;';
+        popupInput.value = '';
+        break;
+    }
+
+
+  } else if(id === 'iconChat') {
+    popupChat.style.cssText += 'top: 0;';
+    popupCapital.innerHTML = 'Картинка чата';
+    popupButton.innerHTML = 'изменить';
+
+    popupInput.type = 'file';
+    
   }
 
 }
@@ -81,7 +108,7 @@ class RightChats extends Block {
     super({
       styles: 'right-position-chat',
       events: {
-        click: (e) => {
+        click: (e: Event) => {
           editPopupAndAddDeleteUser(e.target.id);        
         }
       },
@@ -128,7 +155,7 @@ class RightChats extends Block {
           styles: 'messages-input-button',
           type: 'button',
           events: {
-            click: (e: any) => {
+            click: (e: Event) => {
               const { target } = e;
               const input: HTMLElement | null = document.getElementById('message');
               const chatId: Number = this.props.chatId;
@@ -153,6 +180,7 @@ const mapStateToProps = (state: any) => {
     chatId: state.chatId,
     name: state.chatTitle,
     message: state.message || [],
+    avatar: state.chatAvatar,
   }
 }
 

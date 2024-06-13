@@ -10,6 +10,14 @@ export default class Chats extends Block {
   constructor() {
     super({
       styles: 'chats-page',
+      events: {
+        keydown: (e: Event) => {
+          const keyName = e.key;
+          if(keyName !== 'Enter') return;
+
+          e.preventDefault();
+        }
+      },
       children: {
         rightChats: new RightChats(),
         leftChats: new LeftChats({}),

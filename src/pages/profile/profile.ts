@@ -22,7 +22,7 @@ async function onButtonExit() {
 async function avatarOrPassword() {
   const input = document.querySelector('input');
 
-  const file = input.files[0]
+  const file = input.files[0];
 
   await ProfileController.changeAvatar(file);
 

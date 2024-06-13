@@ -33,7 +33,7 @@ export class ProfileController {
     static async changeAvatar(file) {
         try{
             const data = new FormData();
-            data.append('avatar', file)
+            data.append('avatar', file);
 
             await ProfileApi.changeAvatar({data});
             await AuthController.getUser();

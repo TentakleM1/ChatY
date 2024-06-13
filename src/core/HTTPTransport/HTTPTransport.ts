@@ -3,6 +3,8 @@ import queryStringify from "../utils/queryStringify/queryStringify";
 
 type Options = Record<string, any>;
 
+type HTTPMethod = <R=unknown>(url: string, options?: Options) => Promise<R>
+
 const METHODS = {
     GET: 'GET',
     POST: 'POST',
@@ -19,19 +21,19 @@ export default class HTTPTransport {
                 this.point = `${HTTPTransport.BASE_URL}${point}`
         }
 
-    public get = (url: string, options: Options = {}) => {      
+    public get: HTTPMethod = (url, options = {}) => {      
             return this.request(options ? `${this.point}${url}` : `${this.point}${url}?${queryStringify(options.data)}`, {...options, method: METHODS.GET}, options.timeout);
     };
 
-    public post = (url: string, options: Options = {}) => {
+    public post: HTTPMethod = (url, options = {}) => {
             return this.request(`${this.point}${url}`, {...options, method: METHODS.POST}, options.timeout);
     };
 
-    public put = (url: string, options: Options = {}) => {
+    public put: HTTPMethod = (url, options = {}) => {
             return this.request(`${this.point}${url}`, {...options, method: METHODS.PUT}, options.timeout);
     };
 
-    public delete = (url: string, options: Options = {}) => { 
+    public delete: HTTPMethod = (url, options = {}) => { 
             return this.request(`${this.point}${url}`, {...options, method: METHODS.DELETE}, options.timeout);
     };
 

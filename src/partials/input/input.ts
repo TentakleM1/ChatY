@@ -9,7 +9,7 @@ export default class Input extends Block {
       ...props,
       styles: 'input-wrap',
       events: {
-        blur: (event: any) => {
+        blur: (event: Event) => {
           const { target } = event;
           const validationResult = validation(target.name, target.value);
 

@@ -1,6 +1,6 @@
 export const template = `<main class="chat-wrap" data-id="{{chatId}}">
             <div class="icon-chat">
-                <img class="icon" src="{{iconChat}}" alt="{{dontIconChat}}">
+                <img class="icon" src="https://ya-praktikum.tech/api/v2/resources/{{avatar}}" alt="{{dontIconChat}}">
             </div>
             <div class="name-info">
                 <div class="name-chat">

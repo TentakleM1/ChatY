@@ -58,15 +58,23 @@ async function message(id: string) {
 
   const chatTitle = Store.getState().chats.filter(chat => {
     if(chat.id === Number(id)) {
-      return chat
+      return chat;
     }
   })[0].title;
+
+  const avatar = Store.getState().chats.filter(chat => {
+    if(chat.id === Number(id)) {
+      return chat;
+    }
+  })[0].avatar;
 
   setTimeout(() => {
     messageList = Store.getMessageList(id);
     Store.set('message', messageList)
     Store.set('chatId', id)
     Store.set('chatTitle', chatTitle)
+    Store.set('chatAvatar', avatar)
+
   }, 500)
 }
 
@@ -83,7 +91,7 @@ async function message(id: string) {
             message: chat.last_message ? chat.last_message.content : 'no message',
             new: chat.unread_count,
             events: {
-              click: (e) => {
+              click: (e: Event) => {
                 const chatId = e.currentTarget.id;
                 message(chatId);
               }
@@ -112,10 +120,11 @@ async function message(id: string) {
         return new ChoiceChat({
           id: chat.id,
           name: chat.title,
+          avatar: chat.avatar,
           message: chat.last_message ? chat.last_message.content : 'no message',
           new: chat.unread_count,
           events: {
-            click: (e) => {
+            click: (e: Event) => {
               const chatId = e.currentTarget.id;
               message(chatId);
             }

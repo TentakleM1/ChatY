@@ -15,11 +15,11 @@ Store.on(StoreEvents.Updated, () => {})
 
 export enum Routes {
     Login = '/',
-    Register = '/signup',
-    Chats = '/chats',
+    Register = '/sign-up',
+    Chats = '/messenger',
     Profile = '/profile',
     EditPassword = '/settings-password',
-    ProfileEddit = '/edit',
+    ProfileEddit = '/settings',
     ErrorPage = '/error',
 }
 // const blockChat = new leftChats({chats: {title: 'dima'}})

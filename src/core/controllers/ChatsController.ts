@@ -69,4 +69,18 @@ export class ChatsController {
     }
   }
 
+  static async uploadChatAvatar(id: number, file) {
+    try {
+      const data = new FormData();
+      data.set('chatId', id);
+      data.append('avatar', file);
+
+      await ChatsAPI.uploadChatAvatar({data});
+      
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+
 }
