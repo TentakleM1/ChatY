@@ -5,10 +5,10 @@
 [Navigation](https://yapraktikumchat.netlify.app/)
 
 - [Auth](https://deploy--yapraktikumchat.netlify.app/)
-- [Registration](https://deploy--yapraktikumchat.netlify.app/signup)
-- [Messenger](https://deploy--yapraktikumchat.netlify.app/chats)
+- [Registration](https://deploy--yapraktikumchat.netlify.app/sign-up)
+- [Messenger](https://deploy--yapraktikumchat.netlify.app/messenger)
 - [User](https://deploy--yapraktikumchat.netlify.app/profile)
-- [User settings](https://deploy--yapraktikumchat.netlify.app/edit)
+- [User settings](https://deploy--yapraktikumchat.netlify.app/settings)
 - [404](https://yapraktikumchat.netlify.app/404)
 
 ## Установка
