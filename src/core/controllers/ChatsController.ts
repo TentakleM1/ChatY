@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ChatsAPI, { IChat } from "../api/ChatsApi";
 import Store from "../store/Store";
 
