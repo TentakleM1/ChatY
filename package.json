@@ -2,7 +2,7 @@
   "name": "strekochat",
   "private": true,
   "version": "0.0.0",
-  "type": "commonjs",
+  "type": "module",
   "main": "/main.ts",
   "scripts": {
     "start": "vite build && node ./server.js",
@@ -33,6 +33,7 @@
     "stylelint-order": "^6.0.4",
     "stylelint-prettier": "^5.0.0",
     "stylelint-scss": "^6.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vite": "^4.4.5"
   },
