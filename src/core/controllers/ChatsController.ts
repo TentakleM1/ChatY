@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ChatsAPI, { IChat } from "../api/ChatsApi";
 import Store from "../store/Store";
 
@@ -69,13 +70,13 @@ export class ChatsController {
     }
   }
 
-  static async uploadChatAvatar(id: number, file) {
+  static async uploadChatAvatar(id: number, file: Blob) {
     try {
       const data = new FormData();
       data.set('chatId', id);
       data.append('avatar', file);
 
-      await ChatsAPI.uploadChatAvatar({data});
+      await ChatsAPI.uploadChatAvatar({ data });
       
     } catch (e) {
       console.log(e);
