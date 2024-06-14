@@ -11,14 +11,21 @@
     "build": "npm run prebuild && vite build",
     "preview": "vite preview",
     "stylelint": "stylelint '**/*{.css,.scss}'",
-    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix"
+    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "test": "mocha",
+    "precommit": "npm run test && npm run lint:staged && npm run lint:stylelint"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
+    "chai": "^5.1.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-react": "^7.34.0",
+    "jsdom": "^24.1.0",
+    "mocha": "^10.4.0",
     "sass": "^1.69.5",
     "stylelint": "^16.2.1",
     "stylelint-config-rational-order": "^0.1.2",
