@@ -1,34 +1,32 @@
 {
-  "ts-node": {
-    "files": true
-  },
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2020",
     "useDefineForClassFields": true,
-    "module": "CommonJS",
+    "module": "ESNext",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "outDir": "dist",
-    "esModuleInterop": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
-    "baseUrl": "./src",
-    "allowSyntheticDefaultImports": true,
-    /* Bundler mode */
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-
-    /* Linting */
-    "strict": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "baseUrl": "./",
+    "rootDir": ".",
+    "outDir": "./dist",
+    "alwaysStrict": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": false,
-    "noUnusedLocals": false
+    "strict": true,
+    "strictFunctionTypes": true
   },
   "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
     "transpileOnly": true
-  },
-  "include": ["src", "src/**/*.ts"]
+  }
 }
 
   
