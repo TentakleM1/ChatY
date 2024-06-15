@@ -14,7 +14,7 @@
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "test": "mocha",
     "precommit": "npm run test && npm run stylelint",
-    "prepare": "husky"
+    "prepare": "husky && husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.3.16",
@@ -27,7 +27,7 @@
     "eslint-plugin-react": "^7.34.0",
     "jsdom": "^16.0.0",
     "mocha": "^10.4.0",
-    "husky": "8.0.3",
+    "husky": "^8.0.0",
     "sass": "^1.69.5",
     "lint-staged": "^15.2.2",
     "stylelint": "^16.2.1",
@@ -63,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm test"
+      "pre-commit": "npm test && lint-staged"
     }
   }
 }
