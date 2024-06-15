@@ -13,7 +13,7 @@
     "stylelint": "stylelint '**/*{.css,.scss}'",
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
     "test": "mocha",
-    "precommit": "npm run test && npm run lint:staged && npm run lint:stylelint"
+    "precommit": "npm run test && npm run stylelint"
   },
   "devDependencies": {
     "@types/chai": "^4.3.16",

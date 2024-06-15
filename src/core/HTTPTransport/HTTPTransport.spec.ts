@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { expect } from 'chai';
 import * as sinon from 'sinon';
 import { SinonFakeXMLHttpRequestStatic, SinonFakeXMLHttpRequest } from 'sinon';

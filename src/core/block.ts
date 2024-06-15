@@ -276,3 +276,4 @@ export class Block<P extends Record<string, any> = any> {
     this.getContent().style.display = 'none';
   }
 }
+

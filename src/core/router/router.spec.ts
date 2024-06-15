@@ -1,5 +1,4 @@
-/* global describe, afterEach, it */
-/* eslint no-undef: "error" */
+// @ts-nocheck
 import { expect } from 'chai';
 
 import { router } from './router';

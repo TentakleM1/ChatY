@@ -16,7 +16,9 @@
 - `npm install` — инициализация проекта,
 - `npm run start` — сборка проекта и запуск сервера (http://localhost:3000),
 - `npm run dev` — запуск версии для разработки,
-- `npm run build` — сборка проекта.
+- `npm run build` — сборка проекта,
+- `npm run test` — тестирование,
+- `npm run precommit` — скрипт который запускается перед каждым коммитом.
 
 ## Ключевые технологии
 
@@ -24,3 +26,4 @@
 - TypeScript
 - шаблонизатор - handlebars
 - css препроцессор - sass
+- Mocha

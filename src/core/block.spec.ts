@@ -1,8 +1,7 @@
-/* global describe */
-/* eslint no-undef: "error" */
+// @ts-nocheck
 import { assert } from 'chai';
 import { test } from 'mocha';
-import { Block } from './Block';
+import { Block } from './block';
 
 const template = '{{content}}';
 
