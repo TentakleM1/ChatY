@@ -34,7 +34,9 @@
     "stylelint-prettier": "^5.0.0",
     "stylelint-scss": "^6.1.0",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.3.3",
+    "typings": "^2.1.1",
     "vite": "^4.4.5"
   },
   "dependencies": {
