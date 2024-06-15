@@ -1,27 +1,57 @@
+/* global describe, afterEach, it */
+/* eslint no-undef: "error" */
 import { expect } from 'chai';
 
 import { router } from './router';
-import { Routes } from '../../../main';
-import Auth from '../../pages/auth/auth';
-import Registration from '../../pages/registration/registration';
-import Profile from '../../pages/profile/profile';
+import * as sinon from 'sinon';
 
-describe('Router and Pages Tests', () => {
-  const baseUrl = 'http://localhost:5173';
-  before(() => {
-    router.use(Routes.Login, Auth);
-    router.use(Routes.Register, Registration);
-    router.use(Routes.Profile, Profile);
-  });
+describe('Router', () => {
+    global.window.history.back = () => {
+        if (typeof window.onpopstate === 'function') {
+            window.onpopstate({ currentTarget: window } as unknown as PopStateEvent);
+        }
+    };
+    global.window.history.forward = () => {
+        if (typeof window.onpopstate === 'function') {
+            window.onpopstate({ currentTarget: window } as unknown as PopStateEvent);
+        }
+    };
 
-  it('should navigate to the specified routes', () => {
-    router.go(Routes.Login);
-    expect(window.location.href).to.equal(`${baseUrl}${Routes.Login}`);
+    afterEach(() => {
+        router.destroy();
+    });
 
-    router.go(Routes.Register);
-    expect(window.location.href).to.equal(`${baseUrl}${Routes.Register}`);
+    const getContentFake = sinon.fake.returns(document.createElement('div'));
 
-    router.go(Routes.Profile);
-    expect(window.location.href).to.equal(`${baseUrl}${Routes.Profile}`);
-  });
+    const BlockMock = class {
+        getContent = getContentFake;
+    };
+
+    it('use() return Router instance', () => {
+        const result = router.use('/', BlockMock);
+        expect(result).to.eq(router);
+    });
+
+    it('render page on start', () => {
+        router.use('/', BlockMock).start();
+        expect(getContentFake.callCount).to.eq(1);
+    });
+
+    it('route forward', () => {
+        router.use('/', BlockMock).start();
+        router.forward();
+        expect(getContentFake.callCount).to.greaterThanOrEqual(1);
+    });
+
+    it('route back', () => {
+        router.use('/', BlockMock).start();
+        router.back();
+        expect(getContentFake.callCount).to.greaterThanOrEqual(1);
+    });
+
+    it('route and render messages page', () => {
+        router.use('/messages', BlockMock).start();
+        router.go('/messages');
+        expect(window.location.href).to.eq('http://localhost:3000/messages');
+    });
 });

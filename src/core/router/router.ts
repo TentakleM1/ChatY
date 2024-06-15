@@ -77,6 +77,10 @@ class Router {
     public forward() { // переход вперёд по истории браузера
         this.history.forward();
     }
+
+    public destroy() {
+        this.__instance = undefined;
+    }
 }
 
 export const router = new Router();

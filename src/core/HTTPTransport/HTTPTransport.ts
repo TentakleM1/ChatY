@@ -5,7 +5,7 @@ type Options = Record<string, any>;
 
 type HTTPMethod = <R=unknown>(url: string, options?: Options) => Promise<R>
 
-const METHODS = {
+export const METHODS = {
     GET: 'GET',
     POST: 'POST',
     PUT: 'PUT',
