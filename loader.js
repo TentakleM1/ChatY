@@ -18,4 +18,4 @@ import {
     }
     return resolveTs(specifier, context, defaultResolver);
   }
-  
+
