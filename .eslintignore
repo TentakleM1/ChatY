@@ -1,0 +1,8 @@
+/dist
+**/*.min.js
+**/**/*.tmpl.js
+/src
+/node_modules
+/public
+main.ts
+vite.config.js

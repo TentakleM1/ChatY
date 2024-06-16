@@ -1,0 +1,56 @@
+{
+  "name": "strekochat",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "/main.ts",
+  "scripts": {
+    "start": "vite build && node ./server.cjs",
+    "dev": "vite --open",
+    "prebuild": "tsc --noEmit",
+    "build": "npm run prebuild && vite build",
+    "preview": "vite preview",
+    "stylelint": "stylelint '**/*{.css,.scss}'",
+    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "test": "mocha",
+    "precommit": "npm test && lint-staged && npm run stylelint && npm run lint",
+    "prepare": "husky && husky install",
+    "lint": "eslint"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.6",
+    "@typescript-eslint/eslint-plugin": "^7.1.0",
+    "@typescript-eslint/parser": "^7.1.0",
+    "chai": "^5.1.1",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-react": "^7.34.0",
+    "husky": "^8.0.0",
+    "jsdom": "^16.0.0",
+    "lint-staged": "^15.2.2",
+    "mocha": "^10.4.0",
+    "sass": "^1.69.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-rational-order": "^0.0.4",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-prettier": "^5.0.0",
+    "stylelint-scss": "^6.1.0",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.15.0",
+    "typescript": "^5.3.3",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8",
+    "nanoid": "^5.0.6",
+    "sinon": "^18.0.0",
+    "vite-plugin-checker": "^0.6.4",
+    "vite-plugin-handlebars": "^1.6.0"
+  },
+  "engines": {
+    "node": ">= 12.0.0"
+  }
+}

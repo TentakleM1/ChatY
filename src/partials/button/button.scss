@@ -1,0 +1,49 @@
+.button {
+    margin-bottom: $margin-bottom-button;
+    color: $button-color;
+    font-size: $middle-font-size;
+    background: none;
+    border: none;
+    border-radius: 8px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.button:hover {
+    text-decoration: underline;
+}
+
+.button:active {
+    color: $button-active;
+}
+
+.background {
+    padding: 0.7rem 3rem;
+    color: white;
+    background: $button-color;
+}
+
+.background:hover {
+    text-decoration: none;
+    background: $button-hover;
+}
+
+.background:active {
+    text-decoration: none;
+    background: $button-active;
+}
+
+.button-profile-wrap {
+    padding-top: 1.2rem;
+    padding-right: 1rem;
+
+    .button-profile {
+        float: right;
+        color: $chat-list-color;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+}
